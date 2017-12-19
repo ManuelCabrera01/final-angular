@@ -8,7 +8,7 @@ import { RideDetailsComponent } from './ride-details/ride-details.component';
 export const routes: Routes = [
     { path: ' ', component: AuthComponent },
     { path: ' ', component: CommentComponent },
-    { path: ' ', component: RideListComponent },
-    { path: 'ride/:id', component: RideDetailsComponent },
+    { path: ' rides', component: RideListComponent },
+    { path: 'ride', component: RideDetailsComponent },
     { path: '**', redirectTo: '' }
 ];
