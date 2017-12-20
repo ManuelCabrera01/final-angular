@@ -10,6 +10,7 @@ import { RideDetailsComponent } from './ride-details/ride-details.component';
 import { AuthComponent } from './auth/auth.component';
 import { CommentComponent } from './comment/comment.component';
 import { RideService } from './ride.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RideService } from './ride.service';
     RideListComponent,
     RideDetailsComponent,
     AuthComponent,
-    CommentComponent
+    CommentComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
