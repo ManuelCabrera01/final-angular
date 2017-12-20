@@ -8,7 +8,7 @@ export class RideService {
     constructor(private http: Http) {}
 
     getList() {
-      return this.http.get(`${this.BASE_URL}/api/rides`)
+    return this.http.get(`${this.BASE_URL}/api/rides`)
         .map((res) => res.json());
     }
     get(id) {
@@ -23,7 +23,7 @@ export class RideService {
        }
 
        remove(id) {
-         return this.http.delete(`${this.BASE_URL}/api/ride/${id}`)
+         return this.http.delete(`${this.BASE_URL}/api/rides/${id}`)
            .map((res) => res.json());
        }
      }

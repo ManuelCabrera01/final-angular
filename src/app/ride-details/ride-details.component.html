@@ -2,3 +2,20 @@
   ride-details works!
 </p>
 <a [routerLink]="['rides']"> Back to list </a>
+<div *ngIf="rides">
+      <div class="ride-thumbnail">
+        <img height="300" [src]="ride.image" />
+      </div>
+
+      <div class="ride-info">
+        <h2> {{ ride.name }}&nbsp;</h2>
+        <h2>{{ride.owner}}</h2>
+        <!-- <h3> {{ride.brand }} </h3> -->
+        <p>{{ride.date}}</p>
+
+        
+          <ul>
+
+          </ul>
+        </div>
+      </div>

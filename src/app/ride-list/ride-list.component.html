@@ -1,11 +1,14 @@
 
 <p> ride-list Works! </p>
 <!-- <a [routerLink]="['ride']"> View Details </a> -->
-<h1> Phone list </h1>
+<h1> ridelist </h1>
    <div>
-     <div *ngFor="let ride of rides">
-       <!-- <img [src]="ride.image" /> -->
-       <h3> {{ ride.name }} </h3>
-       <p> {{ ride.owner }} </p>
-     </div>
+     <div>
+      <div *ngFor="let ride of rides">
+        <!-- <img [src]="ride.image" /> -->
+        <h3> {{ ride.name }} </h3>
+        <p> {{ ride.category }} </p>
+        <a [routerLink]="['rides', ride._id]"> View Details </a>
+      </div>
+    </div>
    </div>
