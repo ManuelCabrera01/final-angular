@@ -4,38 +4,87 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-
+import {environment} from '../../environments/environment';
 
 
 @Injectable()
 export class AuthService {
-   BASE_URL: string = 'http://localhost:3000';
-    constructor(private http: Http) {}
 
-    handleError(e) {
-        return Observable.throw(e.json().message);
-      }
-      signup(user) {
-    return this.http.post(`/api/signup`, user)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
 
-  login(user) {
-    return this.http.post(`/api/login`, user)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
+      constructor( private http: Http) {}
+// an argument for each "req.body" in the API route
+      signup(componentInfo) {
+            return this.http.post(
+              `${environment.apiBase}/api/signup`,
+// Form body information to send to the back end (req.body)
+              {
 
-  logout() {
-    return this.http.post(`/api/logout`, {})
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
 
-  checklogin() {
-    return this.http.get(`/api/checklogin`)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
-    }
+                signupUserName:componentInfo.usename,
+                signupPassword:componentInfo.password
+              },
+            )
+  // Convert from observable to promise
+              .toPromise()
+// Parse the JSON
+              .then(res => res.json());
+    }; // close signup()
+      login(componentInfo) {
+          return this.http
+            .post(
+            `${environment.apiBase}/api/login`,
+
+            // Form body information to send to the back end (req.body)
+              {
+                UserName: componentInfo.username,
+              Password: componentInfo.password
+              },
+
+            // Send the cookies across domains
+            // { withCredentials: true }
+            )
+
+          // Convert from observable to promise
+            .toPromise()
+
+          // Parse the JSON
+            .then(res => res.json());
+          } // close login()
+
+
+          logout() {
+            return this.http.post(
+              `${environment.apiBase}/api/logout`,
+
+            // Nothing to send to the back end (req.body)
+              {},
+
+            // Send the cookies across domains
+            // { withCredentials: true }
+            )
+
+          // Convert from observable to promise
+            .toPromise()
+
+          // Parse the JSON
+            .then(res => res.json());
+          } // close logout()
+
+
+      checklogin() {
+          return this.http
+            .get(
+              `${environment.apiBase}/api/checklogin`,
+
+            // Send the cookies across domains
+            // { withCredentials: true }
+            )
+
+          // Convert from observable to promise
+            .toPromise()
+
+          // Parse the JSON
+            .then(res => res.json());
+          } // close checklogin()
+
+        }

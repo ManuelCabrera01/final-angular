@@ -9,7 +9,8 @@ import { RideListComponent } from './ride-list/ride-list.component';
 import { RideDetailsComponent } from './ride-details/ride-details.component';
 import { AuthComponent } from './auth/auth.component';
 import { CommentComponent } from './comment/comment.component';
-import { RideService } from './ride.service';
+import { RideService } from './service/ride.service';
+import { AuthService } from './service/auth.service';
 import { ProfileComponent } from './profile/profile.component';
 
 
@@ -28,7 +29,10 @@ import { ProfileComponent } from './profile/profile.component';
      HttpModule,
      RouterModule.forRoot(routes)
   ],
-  providers: [RideService],
+  providers: [
+      RideService,
+      AuthService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

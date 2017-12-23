@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {RideService} from '../ride.service'
+import {RideService} from '../service/ride.service'
+
+
 @Component({
   selector: 'app-ride-details',
   templateUrl: './ride-details.component.html',
@@ -17,10 +19,10 @@ export class RideDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params =>{
-      this.getPhoneDetails (params['id']);
+      this.getRideDetails (params['id']);
     })
   }
-  getPhoneDetails(id) {
+  getRideDetails(id) {
     this.rideService.get(id)
     .subscribe((ride)=>{
       this.ride = ride;
