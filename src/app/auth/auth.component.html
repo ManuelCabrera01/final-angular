@@ -1,3 +1,41 @@
-<p>
-  auth works!
+
+<h3> sign up</h3>
+<p *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
 </p>
+
+<form (ngSubmit)= "signThemUp()">
+ <label for="username-input" > username </label>
+  <input  id = "username-input" type="text" name="userNameValue"
+    [(ngModel)]="signupInfo.username"      name="userNameValue">
+  <br>
+
+  <label for="password-input">Password</label>
+  <input id = "password-input" type="password" name="passwordValue" placegolder="******"
+    [(ngModel)]="signupInfo.password" name="passwordValue">
+    <br>
+
+    <button>Sign up</button>
+
+
+</form>
+
+
+<h3> Log In </h3>
+ <p *ngIf = "loginErrorMessage" class = "error">
+ {{loginErrorMessage}}
+</p>
+
+ <form (ngSubmit)= "logThemIn()">
+   <label for="login-username-input ">Username</label>
+   <input  id = "login-username-input"type="text" name="username" placeholder="peter sagan"
+   [(ngModel)]="loginInfo.username" name="username">
+
+   <br>
+
+   <label for="login-pass-input">password</label>
+ <input  id = "login-pass-input" type="password" name="loginPassword" placeholder="*******"
+[(ngModel)]= "loginInfo.password" >
+ <br>
+ <button >log in</button>
+ </form>
