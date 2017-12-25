@@ -11,16 +11,16 @@ import {environment} from '../../environments/environment';
 export class AuthService {
 
 
-      constructor( private http: Http) {}
+      constructor( private TheHttp: Http) {}
+
 // an argument for each "req.body" in the API route
       signup(componentInfo) {
-            return this.http.post(
+            return this.TheHttp
+            .post(
               `${environment.apiBase}/api/signup`,
 // Form body information to send to the back end (req.body)
               {
-
-
-                signupUserName:componentInfo.usename,
+                signupUsername:componentInfo.username,
                 signupPassword:componentInfo.password
               },
             )
@@ -30,14 +30,14 @@ export class AuthService {
               .then(res => res.json());
     }; // close signup()
       login(componentInfo) {
-          return this.http
+          return this.TheHttp
             .post(
             `${environment.apiBase}/api/login`,
 
             // Form body information to send to the back end (req.body)
               {
-                UserName: componentInfo.username,
-              Password: componentInfo.password
+                userName: componentInfo.username,
+            password: componentInfo.password
               },
 
             // Send the cookies across domains
@@ -53,7 +53,7 @@ export class AuthService {
 
 
           logout() {
-            return this.http.post(
+            return this.TheHttp.post(
               `${environment.apiBase}/api/logout`,
 
             // Nothing to send to the back end (req.body)
@@ -72,7 +72,7 @@ export class AuthService {
 
 
       checklogin() {
-          return this.http
+          return this.TheHttp
             .get(
               `${environment.apiBase}/api/checklogin`,
 

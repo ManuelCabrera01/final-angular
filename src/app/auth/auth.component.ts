@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
- isloggedOut:boolean = false;
+ isLoggedOut : boolean = false;
 
- signupInfo = {
+ signUpInfo = {
    username:'',
    password: ''
 
@@ -19,36 +19,35 @@ export class AuthComponent implements OnInit {
  errorMessage : string;
 
  loginInfo = {
-   unsermane: '',
+   username: '',
    password: ''
 
  };
  loginErrorMessage :string;
 
   constructor(
-    private Authorization: AuthService,
-    private router:Router
+    private Authorization : AuthService,
+    private router : Router
   ) { }
 
-  ngOnInit(){
-  this.Authorization.checklogin()
-  //if succes, wwe are logged in .
-  .then((resultFromApi) => {
-    this.router.navigate(['/rides']);
-  })
+  ngOnInit() {
+      this.Authorization.checklogin()
+        // If success, we are logged in.
+        .then((resultFromApi) => {
+            this.router.navigate(['/rides']);
+        })
 
-  //Even if you  don't do anything on error, catch to cavoid a console error.
-  .catch((err) => {
-    this.isloggedOut = true;
-  });
-
-  }
+        // Even if you don't do anything on error, catch to avoid a console error.
+        .catch((err) => {
+            this.isLoggedOut = true;
+        });
+    }
 
   signThemUp(){
-    this.Authorization.signup(this.signupInfo)
+    this.Authorization.signup(this.signUpInfo)
     .then((resultFromApi)=> {
       //clear form
-      this.signupInfo= {
+      this.signUpInfo= {
         username:'',
         password:''
       };
@@ -71,7 +70,7 @@ export class AuthComponent implements OnInit {
     .then((resultFromApi)=>{
       //clear the form
       this.loginInfo={
-        unsermane: '',
+        username : '',
         password: ''
       };
 
