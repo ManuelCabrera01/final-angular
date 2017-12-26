@@ -18,7 +18,7 @@ currentUser: any = {};
 
 logoutError: string;
 
-RideArray: any[] = [];
+rideArray: any[] = [];
 rideListError: string;
 
 //keep and eye on this for now
@@ -73,7 +73,7 @@ baseUrl = environment.apiBase;
     this.rideService.getList()
       .subscribe(
         (allTheCamels) => {
-            this.RideArray = allTheCamels;
+            this.rideArray = allTheCamels;
         },
         () => {
             this.rideListError = 'Sorry everybody. No camels today. 😱';
