@@ -1,14 +1,40 @@
+<header>
+  <p> Hello, {{ currentUser.userName }}. </p>
 
-<p> ride-list Works! </p>
-<!-- <a [routerLink]="['ride']"> View Details </a> -->
-<h1> ridelist </h1>
-   <div>
-     <div>
-      <div *ngFor="let ride of rides">
-        <!-- <img [src]="ride.image" /> -->
-        <h3> {{ ride.name }} </h3>
-        <p> {{ ride.category }} </p>
-        <a [routerLink]="['rides', ride._id]"> View Details </a>
-      </div>
-    </div>
-   </div>
+  <button (click)="logMeOutPls()"> Log Out </button>
+  <p *ngIf="logoutError" class="error">
+    {{ logoutError }}
+  </p>
+</header>
+<h2> ride List </h2>
+<p *ngIf="rideListError" class="error">
+  {{ rideListError }}
+</p>
+
+<ul>
+  <li *ngFor="let oneRide of rideArray">
+    <h3> {{ oneRide.name }} </h3>
+
+    <!-- <div class="picture-wrap" [ngStyle]="{ 'background-color': oneCamel.color }"> -->
+      <!-- <img *ngIf="oneCamel.picture"
+          [src]="baseUrl + oneCamel.picture">
+
+      <div *ngIf="!oneCamel.picture" [ngSwitch]="oneCamel.humps">
+        <img *ngSwitchCase="0" src="/assets/images/horse.svg">
+        <img *ngSwitchCase="1" src="/assets/images/one-hump.svg">
+        <img *ngSwitchCase="2" src="/assets/images/two-humps.svg">
+      </div> -->
+    <!-- </div> -->
+
+    <p>
+      Owned by:
+      <b *ngIf="oneCamel.owner?._id !== currentUser._id">
+        {{ oneRide.user?.userName }}
+      </b>
+
+      <b *ngIf="oneRide.user?._id === currentUser._id">
+        YOU
+      </b>
+    </p>
+  </li>
+</ul>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';import { FormsModule } from '@angular/f
 import { HttpModule } from '@angular/http';
 import { RouterModule } from "@angular/router";
 import { routes } from './app.routing';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { RideListComponent } from './ride-list/ride-list.component';
@@ -14,6 +15,7 @@ import { AuthService } from './service/auth.service';
 import { ProfileComponent } from './profile/profile.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +23,15 @@ import { ProfileComponent } from './profile/profile.component';
     RideDetailsComponent,
     AuthComponent,
     CommentComponent,
-    ProfileComponent
+    ProfileComponent,
+
   ],
   imports: [
     BrowserModule,
      FormsModule,
      HttpModule,
-     RouterModule.forRoot(routes)
+     RouterModule.forRoot(routes),
+     FileUploadModule
   ],
   providers: [
       RideService,

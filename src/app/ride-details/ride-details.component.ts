@@ -19,14 +19,14 @@ export class RideDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params =>{
-      this.getRideDetails (params['id']);
+      // this.getRideDetails (params['id']);
     })
   }
-  getRideDetails(id) {
-    this.rideService.get(id)
-    .subscribe((ride)=>{
-      this.ride = ride;
-    })
-  }
+  // getRideDetails(id) {
+  //   // this.rideService.get(id)
+  //   .subscribe((ride)=>{
+  //     this.ride = ride;
+  //   })
+  // }
 
 }
