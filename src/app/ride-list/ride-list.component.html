@@ -1,40 +1,91 @@
-<header>
-  <p> Hello, {{ currentUser.userName }}. </p>
-
-  <button (click)="logMeOutPls()"> Log Out </button>
-  <p *ngIf="logoutError" class="error">
-    {{ logoutError }}
-  </p>
-</header>
-<h2> ride List </h2>
-<p *ngIf="rideListError" class="error">
-  {{ rideListError }}
+<p>
+  rides works!
 </p>
 
-<ul>
-  <li *ngFor="let oneRide of rideArray">
-    <h3> {{ oneRide.name }} </h3>
+<button (click)="logMeOutPls()"> Log Out </button>
+ <p *ngIf="logoutError" class="error">
+   {{ logoutError }}
+ </p>
 
-    <!-- <div class="picture-wrap" [ngStyle]="{ 'background-color': oneCamel.color }"> -->
-      <!-- <img *ngIf="oneCamel.picture"
-          [src]="baseUrl + oneCamel.picture">
+ <div *ngIf="currentUser">
+   <h2> You are now logged in as {{ currentUser.userName }}!! </h2>
 
-      <div *ngIf="!oneCamel.picture" [ngSwitch]="oneCamel.humps">
-        <img *ngSwitchCase="0" src="/assets/images/horse.svg">
-        <img *ngSwitchCase="1" src="/assets/images/one-hump.svg">
-        <img *ngSwitchCase="2" src="/assets/images/two-humps.svg">
-      </div> -->
-    <!-- </div> -->
 
+   <p> Here's the user object </p>
+   <pre> {{ user | json }} </pre>
+ </div>
+
+ <hr>
+
+ <hr>
+ <p *ngIf="rideListError" class="error">
+   {{ rideListError }}
+ </p>
+
+
+ <ul>
+  <li *ngFor="let ride of rideArray">
+    <h3> {{ ride.name }} </h3>
+    <img *ngIf = "ride.picture" [src]="baseUrl + ride.picture" alt="">
     <p>
-      Owned by:
-      <b *ngIf="oneCamel.owner?._id !== currentUser._id">
-        {{ oneRide.user?.userName }}
-      </b>
-
-      <b *ngIf="oneRide.user?._id === currentUser._id">
-        YOU
-      </b>
+      Owned by: {{ ride.owner.Name }}
     </p>
+    <a [routerLink]="['/ride', ride._id]"> View Details </a>
+
   </li>
 </ul>
+
+<button *ngIf="!isShowingForm" (click)="showRideForm()">
+  Add Ride
+</button>
+
+<div *ngIf = "isShowingForm">
+  <h3>Create a New Ride</h3>
+  <p *ngIf = "saveError" class = "error">
+    {{saveError}}
+  </p>
+<!-- <form (ngSubmit) = "saveNewRide()">
+  <label for="ride-name-input"> Ride Name </label>
+  <input type = "text" id="ride-name-input" placeholder=" Spaghetti and Meatballs" [(ngModel)] = "recipeInfo.recipeName" name = "recipeName">
+  <br>
+  <label for="recipe-serves-input"> Recipe Serves how many ?  </label>
+  <input type = "text" id="recipe-serves-input" placeholder=" 4" [(ngModel)] = "recipeInfo.recipeServes" name = "recipeServes">
+  <br>
+  <label for="recipe-serves-input"> Prep + Cook Time?  </label>
+  <input type = "text" id="recipe-cookTime-input" placeholder=" 4" [(ngModel)] = "recipeInfo.recipeCookTime" name = "recipeServes"> minutes
+  <br>
+  <label> Ingredients </label>
+  <input type="text" #ingredient />
+  <button (click)="addIngredient(ingredient.value); ingredient.value = '' "> add ingredient </button>
+
+  <ul>
+    <li *ngFor="let ingredient of recipeInfo.recipeIngredients"> {{ ingredient }} </li>
+  </ul>
+  <br>
+  <label> Directions </label>
+  <input type="text" #direction />
+  <button (click)="addDirection(direction.value); direction.value = '' "> add direction </button>
+
+  <ul>
+    <li *ngFor="let direction of recipeInfo.recipeDirections"> {{ direction }} </li>
+  </ul>
+
+
+  <label> Directions </label>
+  <input type="text" #direction />
+  <button (click)="addDirection(direction.value); direction.value = '' "> Add direction </button>
+
+  <ul>
+    <li *ngFor="let direction of recipeInfo.recipeDirections"> {{ direction }} </li>
+  </ul>
+
+  <label for="recipe-picture-input"> Recipe Picture (required)</label>
+    <input  id="recipe-picture-input" type="file" name="recipePictuer"
+        ng2FileSelect [uploader]="myCoolUploader">
+    <br>
+
+    <button> Save Recipe </button>
+</form> -->
+
+
+</div>

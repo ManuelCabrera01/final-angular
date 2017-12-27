@@ -26,12 +26,12 @@ export class AuthComponent implements OnInit {
  loginErrorMessage :string;
 
   constructor(
-    private Authorization : AuthService,
+    private authThang : AuthService,
     private router : Router
   ) { }
 
   ngOnInit() {
-      this.Authorization.checklogin()
+      this.authThang.checklogin()
         // If success, we are logged in.
         .then((resultFromApi) => {
             this.router.navigate(['/rides']);
@@ -44,7 +44,7 @@ export class AuthComponent implements OnInit {
     }
 
   signThemUp(){
-    this.Authorization.signup(this.signUpInfo)
+    this.authThang.signup(this.signUpInfo)
     .then((resultFromApi)=> {
       //clear form
       this.signUpInfo= {
@@ -66,7 +66,7 @@ export class AuthComponent implements OnInit {
   }//close signThemUp
 
   logThemIn(){
-    this.Authorization.login(this.loginInfo)
+    this.authThang.login(this.loginInfo)
     .then((resultFromApi)=>{
       //clear the form
       this.loginInfo={

@@ -15,20 +15,21 @@ import { FileUploader } from 'ng2-file-upload';
 export class RideListComponent implements OnInit {
 
 currentUser: any = {};
-
 logoutError: string;
+
+
 
 rideArray: any[] = [];
 rideListError: string;
 
-//keep and eye on this for now
+
 isShowingForm: boolean = false;
 
 
 
 rideInfo = {
-    rideName: "",
-    rideDistance: "",
+    rideName: undefined,
+    rideDistance: undefined,
     ridePosition:"",
     rideDate:"",
     rideCategory:"",
@@ -36,55 +37,131 @@ rideInfo = {
     rideMap:"",
     comment: ""
   };
+
   saveError: string;
 
-//   uploaderFiles = new FileUploader({
-//     url: environment.apiBase + '/api/rides'
-// //  itemAlias: 'camelPicture'
-//   });
+  uploaderFiles = new FileUploader({
+    url: environment.apiBase + '/api/rides',
+    itemAlias: 'ridePicture'
+  });
+
 baseUrl = environment.apiBase;
 
   constructor(
-    private rideService: RideService,
-    private authService:AuthService,
-    private router:Router
+    private rideThang: RideService,
+    private authThang: AuthService,
+    private routerThang:Router
     ) { }
 
     ngOnInit() {
-        this.authService.checklogin()
-          .then((userFromApi) => {
-              this.currentUser = userFromApi;
-              this.getTheRides();
-          })
-          .catch(() => {
-              this.router.navigate(['/']);
-          });
-      } // close ngOnInit()
+     // this.getThemRides();
+     this.authThang.checklogin()
+       .then((userFromApi) => {
+           this.currentUser = userFromApi;
+           this.getThemRides();
+       })
+       .catch(() => {
+           this.routerThang.navigate(['/rides']);
+       });console.log('you cant get in')
+   } // close ngOnInit()
+
       logMeOutPls() {
-    this.authService.logout()
+    this.authThang.logout()
       .then(() => {
-          this.router.navigate(['/']);
+          this.routerThang.navigate(['/']);
       })
       .catch(() => {
           this.logoutError = 'your cant logout';
       });
   } // close logMeOutPls()
-  getTheRides() {
-    this.rideService.getList()
+  getThemRides() {
+    this.rideThang.allRide()
       .subscribe(
-        (allTheCamels) => {
-            this.rideArray = allTheCamels;
+        (allTheRides) => {
+            this.rideArray = allTheRides;
         },
         () => {
             this.rideListError = 'Sorry everybody. No camels today. 😱';
         }
       );
-  } // close getThemCamels()
+  } // close getThemRides()
+
   showRideForm() {
     this.isShowingForm = true;
   } // close showCamelForm()
 
+  saveNewRide() {
+      // if no picture, regular AJAX upload
+      if (this.uploaderFiles.getNotUploadedItems().length === 0) {
+        this.saveRideNoPicture();
+      }
 
+      // else, upload pictures with uploader
+      else {
+        this.saveRideWithPicture();
+      }
+    } // close saveNewCamel()
+    private saveRideNoPicture() {
+      this.rideThang.newRide(this.rideInfo)
+        .subscribe(
+          (newRideFromApi) => {
+              this.rideArray.push(newRideFromApi);
+              this.isShowingForm = false;
+              this.rideInfo = {
+                rideName: undefined,
+                rideDistance: undefined,
+                ridePosition:"",
+                rideDate:"",
+                rideCategory:"",
+                rideParticipant:"",
+                rideMap:"",
+                comment: ""
+              };
+              this.saveError = "";
+          },
+          (err) => {
+              this.saveError = 'Dont be a dumb 🐫';
+          }
+        );
+    } // close saveCamelNoPicture
 
+    private saveRideWithPicture() {
+      this.uploaderFiles.onBuildItemForm = (item, form) => {
+          form.append('rideNamee', this.rideInfo.rideName);
+          form.append('rideDistance', this.rideInfo.rideDistance);
+          form.append('ridePosition', this.rideInfo.ridePosition);
+          form.append('rideDate', this.rideInfo.rideDate);
+          form.append('rideCategory', this.rideInfo.rideCategory);
+          form.append('ridePosition', this.rideInfo.ridePosition);
+          form.append('rideParticipant', this.rideInfo.rideParticipant);
+          form.append('rideMap', this.rideInfo.rideMap);
+      };
+
+      this.uploaderFiles.onSuccessItem = (item, response) => {
+          console.log(item);
+          const newRideFromApi = JSON.parse(response);
+          this.rideArray.push(newRideFromApi);
+          this.isShowingForm = false;
+          this.rideInfo = {
+            rideName: undefined,
+            rideDistance: undefined,
+            ridePosition:"",
+            rideDate:"",
+            rideCategory:"",
+            rideParticipant:"",
+            rideMap:"",
+            comment: ""
+          };
+          this.saveError = "";
+      };
+
+      this.uploaderFiles.onErrorItem = (item, response) => {
+          console.log(item, response);
+          this.saveError = 'Dont be a dumb 🐫';
+      };
+
+      // this is the function that initiates the AJAX request
+      this.uploaderFiles.uploadAll();
+    } // close saveRideWithPicture
 
 }

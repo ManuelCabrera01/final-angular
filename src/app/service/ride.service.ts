@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+// import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 
@@ -10,27 +10,27 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class RideService {
 
-    constructor(private TheHttp: Http)
+    constructor(
+      private httpThang: Http)
     {}
-
     newRide(componentInfo) {
-      return this.TheHttp
-        .post(
-          `${environment.apiBase}/api/ride`,
+       return this.httpThang
+         .post(
+           `${environment.apiBase}/api/rides`,
 
-          // Form body information to send to the back end (req.body)
-          componentInfo,
+           // Form body information to send to the back end (req.body)
+           componentInfo,
 
-          // Send the cookies across domains
-          // { withCredentials: true }
-        )
+           // Send the cookies across domains
+           { withCredentials: true }
+         )
 
-        // Parse the JSON
-        .map(res => res.json());
-  } // close newCamel()
+         // Parse the JSON
+         .map(res => res.json());
+   } // close newRide()
 
   editRide(componentInfo) {
-    return this.TheHttp
+    return this.httpThang
       .post(
         `${environment.apiBase}/api/ride`,
 
@@ -46,18 +46,25 @@ export class RideService {
 } // close editCamel()
 
 
-  getList() {
-    return this.TheHttp
+allRide() {
+    return this.httpThang
       .get(
-        `${environment.apiBase}/api/rides`,
-
+        `${environment.apiBase}/api/recipes`,
         // Send the cookies across domains
-        // { withCredentials: true }
+        { withCredentials: true }
       )
-
       // Parse the JSON
       .map(res => res.json());
-} // close allCamels()
+} // close allRecipes()
+get(id){
+  return this.httpThang
+  .get(
+    `${environment.apiBase}/api/rides/${id}`,
+    {withCredentials: true }
+  )
+  //parse the json
+  .map(res => res.json());
+}//close specific ride
 
 }
 

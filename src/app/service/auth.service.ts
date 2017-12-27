@@ -11,11 +11,11 @@ import {environment} from '../../environments/environment';
 export class AuthService {
 
 
-      constructor( private TheHttp: Http) {}
+      constructor( private httpThang: Http) {}
 
 // an argument for each "req.body" in the API route
       signup(componentInfo) {
-            return this.TheHttp
+            return this.httpThang
             .post(
               `${environment.apiBase}/api/signup`,
 // Form body information to send to the back end (req.body)
@@ -30,7 +30,7 @@ export class AuthService {
               .then(res => res.json());
     }; // close signup()
       login(componentInfo) {
-          return this.TheHttp
+          return this.httpThang
             .post(
             `${environment.apiBase}/api/login`,
 
@@ -53,7 +53,7 @@ export class AuthService {
 
 
           logout() {
-            return this.TheHttp.post(
+            return this.httpThang.post(
               `${environment.apiBase}/api/logout`,
 
             // Nothing to send to the back end (req.body)
@@ -71,20 +71,21 @@ export class AuthService {
           } // close logout()
 
 
-      checklogin() {
-          return this.TheHttp
+          checklogin() {
+          return this.httpThang
             .get(
-              `${environment.apiBase}/api/checklogin`,
+              `${environment.apiBase}/api/checklogin`
 
-            // Send the cookies across domains
-            // { withCredentials: true }
+              // Send the cookies across domains
+              // { withCredentials: true }
             )
 
-          // Convert from observable to promise
+            // Convert from observable to promise
             .toPromise()
 
-          // Parse the JSON
+            // Parse the JSON
             .then(res => res.json());
-          } // close checklogin()
+      } // close checklogin()
+
 
         }
