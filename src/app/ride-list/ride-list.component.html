@@ -1,6 +1,4 @@
-<p>
-  rides works!
-</p>
+  <p> Hello, {{ currentUser.username }}. </p>
 
 <button (click)="logMeOutPls()"> Log Out </button>
  <p *ngIf="logoutError" class="error">
@@ -8,7 +6,7 @@
  </p>
 
  <div *ngIf="currentUser">
-   <h2> You are now logged in as {{ currentUser.userName }}!! </h2>
+   <h2> You are now logged in as {{ currentUser.username }}!! </h2>
 
 
    <p> Here's the user object </p>
@@ -26,9 +24,9 @@
  <ul>
   <li *ngFor="let ride of rideArray">
     <h3> {{ ride.name }} </h3>
-    <img *ngIf = "ride.picture" [src]="baseUrl + ride.picture" alt="">
+    <!-- <img *ngIf = "ride.picture" [src]="baseUrl + ride.picture" alt=""> -->
     <p>
-      Owned by: {{ ride.owner.Name }}
+      Owned by: {{ ride.user?.username }}
     </p>
     <a [routerLink]="['/ride', ride._id]"> View Details </a>
 

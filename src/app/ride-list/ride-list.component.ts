@@ -15,16 +15,14 @@ import { FileUploader } from 'ng2-file-upload';
 export class RideListComponent implements OnInit {
 
 currentUser: any = {};
+
 logoutError: string;
-
-
 
 rideArray: any[] = [];
 rideListError: string;
 
 
 isShowingForm: boolean = false;
-
 
 
 rideInfo = {
@@ -40,7 +38,7 @@ rideInfo = {
 
   saveError: string;
 
-  uploaderFiles = new FileUploader({
+  myCoolUploader = new FileUploader({
     url: environment.apiBase + '/api/rides',
     itemAlias: 'ridePicture'
   });
@@ -58,11 +56,12 @@ baseUrl = environment.apiBase;
      this.authThang.checklogin()
        .then((userFromApi) => {
            this.currentUser = userFromApi;
+          //  console.log(currentUser)
            this.getThemRides();
        })
        .catch(() => {
            this.routerThang.navigate(['/rides']);
-       });console.log('you cant get in')
+       });
    } // close ngOnInit()
 
       logMeOutPls() {
@@ -75,7 +74,7 @@ baseUrl = environment.apiBase;
       });
   } // close logMeOutPls()
   getThemRides() {
-    this.rideThang.allRide()
+    this.rideThang.allRides()
       .subscribe(
         (allTheRides) => {
             this.rideArray = allTheRides;
@@ -92,7 +91,7 @@ baseUrl = environment.apiBase;
 
   saveNewRide() {
       // if no picture, regular AJAX upload
-      if (this.uploaderFiles.getNotUploadedItems().length === 0) {
+      if (this.myCoolUploader.getNotUploadedItems().length === 0) {
         this.saveRideNoPicture();
       }
 
@@ -126,7 +125,7 @@ baseUrl = environment.apiBase;
     } // close saveCamelNoPicture
 
     private saveRideWithPicture() {
-      this.uploaderFiles.onBuildItemForm = (item, form) => {
+      this.myCoolUploader.onBuildItemForm = (item, form) => {
           form.append('rideNamee', this.rideInfo.rideName);
           form.append('rideDistance', this.rideInfo.rideDistance);
           form.append('ridePosition', this.rideInfo.ridePosition);
@@ -137,7 +136,7 @@ baseUrl = environment.apiBase;
           form.append('rideMap', this.rideInfo.rideMap);
       };
 
-      this.uploaderFiles.onSuccessItem = (item, response) => {
+      this.myCoolUploader.onSuccessItem = (item, response) => {
           console.log(item);
           const newRideFromApi = JSON.parse(response);
           this.rideArray.push(newRideFromApi);
@@ -155,13 +154,13 @@ baseUrl = environment.apiBase;
           this.saveError = "";
       };
 
-      this.uploaderFiles.onErrorItem = (item, response) => {
+      this.myCoolUploader.onErrorItem = (item, response) => {
           console.log(item, response);
           this.saveError = 'Dont be a dumb 🐫';
       };
 
       // this is the function that initiates the AJAX request
-      this.uploaderFiles.uploadAll();
+      this.myCoolUploader.uploadAll();
     } // close saveRideWithPicture
 
 }

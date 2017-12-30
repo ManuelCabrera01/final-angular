@@ -22,7 +22,7 @@ export class RideService {
            componentInfo,
 
            // Send the cookies across domains
-           { withCredentials: true }
+          //  { withCredentials: true }
          )
 
          // Parse the JSON
@@ -46,21 +46,22 @@ export class RideService {
 } // close editCamel()
 
 
-allRide() {
+allRides() {
     return this.httpThang
       .get(
         `${environment.apiBase}/api/recipes`,
         // Send the cookies across domains
-        { withCredentials: true }
+        // { withCredentials: true }
       )
       // Parse the JSON
       .map(res => res.json());
 } // close allRecipes()
+
 get(id){
   return this.httpThang
   .get(
     `${environment.apiBase}/api/rides/${id}`,
-    {withCredentials: true }
+    // {withCredentials: true }
   )
   //parse the json
   .map(res => res.json());
