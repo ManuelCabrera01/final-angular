@@ -51,12 +51,14 @@ export class AuthComponent implements OnInit {
         username:'',
         password:''
       };
+      // console.log(username)
 
       //clear error message
       this.errorMessage = '';
 
       //redirect to /rides
       this.router.navigate(['/rides']);
+
 
     })
     .catch((err)=>{

@@ -29,27 +29,27 @@ export class RideService {
          .map(res => res.json());
    } // close newRide()
 
-  editRide(componentInfo) {
-    return this.httpThang
-      .post(
-        `${environment.apiBase}/api/ride`,
-
-        // Form body information to send to the back end (req.body)
-        componentInfo,
-
-        // Send the cookies across domains
-        // { withCredentials: true }
-      )
-
-      // Parse the JSON
-      .map(res => res.json());
-} // close editCamel()
+//   editRide(componentInfo) {
+//     return this.httpThang
+//       .post(
+//         `${environment.apiBase}/api/ride`,
+//
+//         // Form body information to send to the back end (req.body)
+//         componentInfo,
+//
+//         // Send the cookies across domains
+//         // { withCredentials: true }
+//       )
+//
+//       // Parse the JSON
+//       .map(res => res.json());
+// } // close editCamel()
 
 
 allRides() {
     return this.httpThang
       .get(
-        `${environment.apiBase}/api/recipes`,
+        `${environment.apiBase}/api/rides`,
         // Send the cookies across domains
         // { withCredentials: true }
       )
@@ -57,15 +57,15 @@ allRides() {
       .map(res => res.json());
 } // close allRecipes()
 
-get(id){
-  return this.httpThang
-  .get(
-    `${environment.apiBase}/api/rides/${id}`,
-    // {withCredentials: true }
-  )
-  //parse the json
-  .map(res => res.json());
-}//close specific ride
+// get(id){
+//   return this.httpThang
+//   .get(
+//     `${environment.apiBase}/api/rides/${id}`,
+//     // {withCredentials: true }
+//   )
+//   //parse the json
+//   .map(res => res.json());
+// }//close specific ride
 
 }
 
