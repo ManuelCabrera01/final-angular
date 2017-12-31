@@ -58,6 +58,7 @@ baseUrl = environment.apiBase;
            this.currentUser = userFromApi;
           //  console.log(currentUser)
            this.getThemRides();
+
        })
        .catch(() => {
            this.routerThang.navigate(['/rides']);
@@ -74,6 +75,7 @@ baseUrl = environment.apiBase;
       });
   } // close logMeOutPls()
   getThemRides() {
+    //  console.log(userFromApi)
     this.rideThang.allRides()
       .subscribe(
         (allTheRides) => {
