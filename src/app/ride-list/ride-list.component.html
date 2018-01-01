@@ -48,33 +48,33 @@
   <label for="ride-distance-input"> miles  </label>
   <input type = "text" id="ride-distance-input" placeholder=" 100" [(ngModel)] = "rideInfo.rideDistance" name = "rideDistance">
   <br>
-  <label for="ride-position-input">  </label>
-  <input type = "text" id="ride-position-input"  [(ngModel)] = "rideInfo.ridePosition" name = "ridePosition"> minutes
-  <br>
+  <!-- <label for="ride-position-input">  </label>
+  <input type = "text" id="ride-position-input"  [(ngModel)] = "rideInfo.ridePosition" name = "ridePosition">
+  <br> -->
   <!-- <label> date </label>
   <input type="text" #ingredient />
   <button (click)="addIngredient(ingredient.value); ingredient.value = '' "> add ingredient </button> -->
 
   <ul>
-    <li *ngFor="let ingredient of rideInfo.rideCategory"> {{ category }} </li>
+    <li *ngFor="let category of rideInfo.rideCategory"> {{ category }} </li>
   </ul>
   <br>
   <label for="ride-date-input">Enter date of the ride</label>
   <input id="date" type="date">
-  <button> date</button>
+
 <br>
   <!-- <ul>
     <li *ngFor="let direction of recipeInfo.recipeDirections"> {{ direction }} </li>
   </ul> -->
 
 
-  <label> Directions </label>
+  <!-- <label> Directions </label>
   <input type="text" #direction />
-  <button (click)="addDirection(direction.value); direction.value = '' ">  </button>
+  <button (click)="addDirection(direction.value); direction.value = '' ">  </button> -->
 
-  <ul>
+  <!-- <ul>
     <li *ngFor="let participant of participantInfo.rideparticipant"> {{ poarticipant }} </li>
-  </ul>
+  </ul> -->
 
   <!-- <label for="recipe-picture-input"> Recipe Picture (required)</label>
     <input  id="recipe-picture-input" type="file" name="recipePictuer"

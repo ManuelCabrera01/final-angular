@@ -121,7 +121,7 @@ baseUrl = environment.apiBase;
               this.saveError = "";
           },
           (err) => {
-              this.saveError = 'Dont be a dumb 🐫';
+              this.saveError = 'ride is not able to save';
           }
         );
     } // close saveCamelNoPicture

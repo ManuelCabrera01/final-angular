@@ -27,15 +27,15 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private authThang : AuthService,
-    private router : Router
+    private routerThang : Router
   ) { }
 
   ngOnInit() {
-      this.authThang.checklogin()
-        // If success, we are logged in.
-        .then((resultFromApi) => {
-            this.router.navigate(['/rides']);
-        })
+    this.authThang.checklogin()
+     // If success, we are logged in.
+     .then((resultFromApi) => {
+         this.routerThang.navigate(['/rides']);
+     })
 
         // Even if you don't do anything on error, catch to avoid a console error.
         .catch((err) => {
@@ -57,7 +57,7 @@ export class AuthComponent implements OnInit {
       this.errorMessage = '';
 
       //redirect to /rides
-      this.router.navigate(['/rides']);
+      this.routerThang.navigate(['/rides']);
 
 
     })
@@ -80,7 +80,7 @@ export class AuthComponent implements OnInit {
       this.loginErrorMessage = '';
 
       //redirec to /rides
-      this.router.navigate(['/rides']);
+      this.routerThang.navigate(['/rides']);
     })
     .catch((err)=> {
       const parsedError = err.json();
