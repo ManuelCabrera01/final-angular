@@ -67,7 +67,7 @@ export class AuthComponent implements OnInit {
     })
   }//close signThemUp
 
-  logThemIn(){
+  doLogin(){
     this.authThang.login(this.loginInfo)
     .then((resultFromApi)=>{
       //clear the form
@@ -83,6 +83,7 @@ export class AuthComponent implements OnInit {
       this.routerThang.navigate(['/rides']);
     })
     .catch((err)=> {
+
       const parsedError = err.json();
       this.loginErrorMessage= parsedError.message = '🤪'
     });

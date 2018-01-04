@@ -26,7 +26,7 @@
  {{loginErrorMessage}}
 </p>
 
- <form (ngSubmit)= "logThemIn()">
+ <form (ngSubmit)= "doLogin()">
    <label for="login-username-input ">Username</label>
    <input  id = "login-username-input"type="text" name="username" placeholder="peter sagan"
    [(ngModel)]="loginInfo.username" name="username">

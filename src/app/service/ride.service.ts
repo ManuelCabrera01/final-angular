@@ -22,7 +22,7 @@ export class RideService {
            componentInfo,
 
            // Send the cookies across domains
-          //  { withCredentials: true }
+           { withCredentials: true }
          )
 
          // Parse the JSON
@@ -38,8 +38,8 @@ export class RideService {
 //         componentInfo,
 //
 //         // Send the cookies across domains
-//         // { withCredentials: true }
-//       )
+      //   { withCredentials: true }
+      // )
 //
 //       // Parse the JSON
 //       .map(res => res.json());
@@ -51,7 +51,7 @@ allRides() {
       .get(
         `${environment.apiBase}/api/rides`,
         // Send the cookies across domains
-        // { withCredentials: true }
+        { withCredentials: true }
       )
       // Parse the JSON
       .map(res => res.json());

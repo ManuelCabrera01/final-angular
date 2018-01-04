@@ -38,11 +38,11 @@ export class AuthService {
             // Form body information to send to the back end (req.body)
               {
                 username: componentInfo.username,
-            password: componentInfo.password
+                password: componentInfo.password
               },
 
             // Send the cookies across domains
-            // { withCredentials: true }
+            { withCredentials: true }
             )
 
           // Convert from observable to promise
@@ -61,7 +61,7 @@ export class AuthService {
               {},
 
             // Send the cookies across domains
-            // { withCredentials: true }
+            { withCredentials: true }
             )
 
           // Convert from observable to promise
@@ -75,10 +75,10 @@ export class AuthService {
           checklogin() {
           return this.httpThang
             .get(
-              `${environment.apiBase}/api/checklogin`
+              `${environment.apiBase}/api/checklogin`,
 
               // Send the cookies across domains
-              // { withCredentials: true }
+              { withCredentials: true }
             )
 
             // Convert from observable to promise
