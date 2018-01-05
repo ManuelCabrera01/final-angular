@@ -13,6 +13,7 @@ export class RideService {
     constructor(
       private httpThang: Http)
     {}
+
     newRide(componentInfo) {
        return this.httpThang
          .post(
@@ -57,6 +58,16 @@ allRides() {
       .map(res => res.json());
 } // close allRecipes()
 
+
+get(id){
+  return this.httpThang
+  .get(
+    `${environment.apiBase}/api/rides/${id}`,
+    {withCredentials: true }
+  )
+  //parse the json
+  .map(res => res.json());
+}//close specific recipe
 // get(id){
 //   return this.httpThang
 //   .get(
