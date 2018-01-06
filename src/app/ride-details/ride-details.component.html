@@ -1,11 +1,42 @@
-<p>
-  ride-details works!
-</p>
-<a [routerLink]="['']"> Back to list </a>
+
+<a [routerLink]="['/rides']"> Back to list </a>
 <div *ngIf="ride">
-        <h2> {{ ride.name }}&nbsp;</h2>
-        <h2>{{ride.owner}}</h2>
+        <h2> {{ ride.name }}</h2>
+        <h3>distace :{{ride.distance}}</h3>
+        <p>  date :{{ride.date}} </p>
+        <!-- <h2>{{ride.user.userName}}</h2> -->
+        <p> category: {{ride.category}}</p>
+        <p> participant: {{ride.participant}}</p>
+        <!-- <p>{{ride.user}}</p> -->
 
-        <p>{{ride.date}}</p>
-
+<button (click)="deleteRide()"> Delete </button>
       </div>
+
+
+
+        <button *ngIf="!isShowingForm" (click)="showRideForm()">
+          edit  Ride
+        </button>
+        <div *ngIf = "isShowingForm">
+        <form (ngSubmit) = "editRide()">
+        <label for="ride-name-input"> Ride Name </label>
+        <input type = "text" id="ride-name-input"placeholder=" "
+         [(ngModel)] = "rideInfo.rideName" name = "rideName">
+        <br>
+        <label for="ride-distance-input"> miles  </label>
+        <input type = "text" id="ride-distance-input" placeholder=" 100"
+        [(ngModel)] = "rideInfo.rideDistance" name = "rideDistance">
+        <br>
+        <label for="ride-category-input"> category  </label>
+        <input type = "text" id="ride-category-input" placeholder=" A B or C"
+         [(ngModel)] = "rideInfo.rideCategory" name = "rideCategory">
+        <br>
+        <label for="ride-date-input">Enter new date of the ride</label>
+        <input id="ride-date-input" type="date"
+        [(ngModel)] = "rideInfo.rideDate" name = "rideDate">
+        <br>
+          <button> Save  </button>
+      </form>
+      </div>
+
+      <!-- </div> -->

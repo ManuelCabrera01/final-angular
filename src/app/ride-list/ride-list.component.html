@@ -1,88 +1,98 @@
-<p>
-</p>
+<header>
+  <p> Hello, {{ currentUser.username }}. </p>
 
-<button (click)="logMeOutPls()"> Log Out </button>
- <p *ngIf="logoutError" class="error">
-   {{ logoutError }}
- </p>
+  <button (click)="logMeOutPls()"> Log Out </button>
+  <p *ngIf="logoutError" class="error">
+    {{ logoutError }}
+  </p>
+</header>
+
 
  <div *ngIf="currentUser">
    <h2> You are now logged in as {{ currentUser.username }}!! </h2>
+ <!-- <pre> {{ user | json }} </pre> -->
 
-   <pre> {{ user | json }} </pre>
  </div>
 
- <hr>
+ <a [routerLink]="['profile']"> profile </a>
+ <!-- <a [routerLink]="['rides', oneRide._id]"> View Details </a> -->
 
- <hr>
+ <h3>ride list</h3>
+
  <p *ngIf="rideListError" class="error">
    {{ rideListError }}
  </p>
 
+ <hr>
+ <button *ngIf="!isShowingForm" (click)="showRideForm()">
+   Add Ride
+ </button>
+
+ <div *ngIf = "isShowingForm">
+   <h3>Create a New Ride</h3>
+
+   <p *ngIf = "saveError" class = "error">
+     {{saveError}}
+   </p>
+
+ <form (ngSubmit) = "saveNewRide()">
+   <label for="ride-name-input"> Ride Name </label>
+   <input type = "text" id="ride-name-input"
+   placeholder=" tour de france" [(ngModel)] = "rideInfo.rideName" name = "rideName">
+   <br>
+   <label for="ride-distance-input"> miles  </label>
+   <input type = "text" id="ride-distance-input" placeholder=" 100"
+   [(ngModel)] = "rideInfo.rideDistance" name = "rideDistance">
+   <br>
+   <label for="ride-category-input"> category  </label>
+   <input type = "text" id="ride-category-input" placeholder=" A B or C"
+    [(ngModel)] = "rideInfo.rideCategory" name = "rideCategory">
+   <br>
+   <label for="ride-date-input">Enter  date of the ride</label>
+   <input id="ride-date-input" type="date"
+   [(ngModel)] = "rideInfo.rideDate" name = "rideDate">
+  <br>
+   <label for="ride-picture-input"> ride Picture (optional)</label>
+    <input  id="ride-picture-input" type="file" name="ridePicture"
+        ng2FileSelect [uploader]="myCoolUploader">
+     <br>
+
+     <button> Save Ride </button>
+ </form>
+ </div>
+
+ <hr>
 
  <ul>
-  <li *ngFor="let ride of rideArray">
-    <h3> {{ ride.name }} </h3>
-    <!-- <img *ngIf = "ride.picture" [src]="baseUrl + ride.picture" alt=""> -->
+  <li *ngFor="let oneRide of rideArray">
+    <h3> {{ oneRide.name }} </h3>
     <p>
-      Owned by: {{ ride.user?.username }}
+    Owned by:
+    <!-- <b *ngIf="oneRide.user?._id !== currentUser._id">
+      {{ oneRide.user.username }}
+    </b>
+
+    <b *ngIf="oneRide.user?._id === currentUser._id">
+      YOU
+    </b>
+  </p> -->
+    <p>
+      distance: {{ oneRide.distance}}
+      <br>
+      category : {{oneRide.category}}
+      <br>
+      date : {{oneRide.date}}
     </p>
-    <a [routerLink]="['/ride', ride._id]"> View Details </a>
+    <a [routerLink]="['rides', oneRide._id]"> View Details </a>
+
 
   </li>
 </ul>
+<!-- <div class="picture-wrap" >
+<img *ngIf="ride.picture"
+[src]="baseUrl + ride.picture">
 
-<button *ngIf="!isShowingForm" (click)="showRideForm()">
-  Add Ride
-</button>
-
-<div *ngIf = "isShowingForm">
-  <h3>Create a New Ride</h3>
-  <p *ngIf = "saveError" class = "error">
-    {{saveError}}
-  </p>
-<form (ngSubmit) = "saveNewRide()">
-  <label for="ride-name-input"> Ride Name </label>
-  <input type = "text" id="ride-name-input" placeholder=" tour de france" [(ngModel)] = "rideInfo.rideName" name = "rideName">
-  <br>
-  <label for="ride-distance-input"> miles  </label>
-  <input type = "text" id="ride-distance-input" placeholder=" 100" [(ngModel)] = "rideInfo.rideDistance" name = "rideDistance">
-  <br>
-  <!-- <label for="ride-position-input">  </label>
-  <input type = "text" id="ride-position-input"  [(ngModel)] = "rideInfo.ridePosition" name = "ridePosition">
-  <br> -->
-  <!-- <label> date </label>
-  <input type="text" #ingredient />
-  <button (click)="addIngredient(ingredient.value); ingredient.value = '' "> add ingredient </button> -->
-
-  <ul>
-    <li *ngFor="let category of rideInfo.rideCategory"> {{ category }} </li>
-  </ul>
-  <br>
-  <label for="ride-date-input">Enter date of the ride</label>
-  <input id="date" type="date">
-
-<br>
-  <!-- <ul>
-    <li *ngFor="let direction of recipeInfo.recipeDirections"> {{ direction }} </li>
-  </ul> -->
-
-
-  <!-- <label> Directions </label>
-  <input type="text" #direction />
-  <button (click)="addDirection(direction.value); direction.value = '' ">  </button> -->
-
-  <!-- <ul>
-    <li *ngFor="let participant of participantInfo.rideparticipant"> {{ poarticipant }} </li>
-  </ul> -->
-
-  <!-- <label for="recipe-picture-input"> Recipe Picture (required)</label>
-    <input  id="recipe-picture-input" type="file" name="recipePictuer"
-        ng2FileSelect [uploader]="myCoolUploader"> -->
-    <br>
-
-    <button> Save Ride </button>
-</form>
-
-
-</div>
+<div *ngIf="!ride.picture" >
+<img  src="/assets/images/kid-riding-bike.jpg"> -->
+<!-- </div>
+</div> -->

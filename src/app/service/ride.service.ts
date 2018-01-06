@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-// import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 
@@ -47,28 +47,51 @@ export class RideService {
 // } // close editCamel()
 
 
-allRides() {
-    return this.httpThang
-      .get(
-        `${environment.apiBase}/api/rides`,
-        // Send the cookies across domains
-        { withCredentials: true }
+      allRides() {
+        return this.httpThang
+          .get(
+            `${environment.apiBase}/api/rides`,
+            // Send the cookies across domains
+            { withCredentials: true }
+          )
+          // Parse the JSON
+          .map(res => res.json());
+      } // close allRecipes()
+
+
+      get(id){
+        return this.httpThang
+        .get(
+          `${environment.apiBase}/api/rides/${id}`,
+          {withCredentials: true }
+        )
+        //parse the json
+        .map(res => res.json());
+      }//close specific recipe
+
+      edit(id){
+      return this.httpThang
+      .put(
+        `${environment.apiBase}/api/rides/${id}/edit`,
+        {withCredentials: true }
       )
-      // Parse the JSON
+      //parse the json
       .map(res => res.json());
-} // close allRecipes()
+    }//edit specific ride
+
+      remove(id){
+        return this.httpThang
+        .delete(
+        `${environment.apiBase}/api/rides/${id}`,
+          {withCredentials: true }
+        )
+        //parse the json
+        .map(res => res.json());
+      }//delete specific ride
+      // get(id){
 
 
-get(id){
-  return this.httpThang
-  .get(
-    `${environment.apiBase}/api/rides/${id}`,
-    {withCredentials: true }
-  )
-  //parse the json
-  .map(res => res.json());
-}//close specific recipe
-// get(id){
+
 //   return this.httpThang
 //   .get(
 //     `${environment.apiBase}/api/rides/${id}`,

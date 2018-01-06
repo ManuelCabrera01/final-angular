@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
 
 import { AuthComponent } from './auth/auth.component';
 import { CommentComponent } from './comment/comment.component';
@@ -10,5 +11,6 @@ export const routes: Routes = [
     { path: 'rides/:id/comment', component: CommentComponent },
     { path: 'rides', component: RideListComponent },
     { path: 'rides/:id', component: RideDetailsComponent },
-    { path: '**', redirectTo: '' }
+    { path: 'rides', redirectTo: '' },
+    { path: 'profile/:id', component: ProfileComponent },
 ];

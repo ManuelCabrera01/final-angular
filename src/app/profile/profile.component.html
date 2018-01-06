@@ -1,3 +1,13 @@
 <p>
   profile works!
 </p>
+<ul>
+ <li *ngFor="let ride of userRideArray">
+   <h3> {{ ride.name }} </h3>
+   <p>
+     Owned by: {{ ride.user.userName }}
+   </p>
+   <a [routerLink]="['/ride', ride._id]"> View Details </a>
+
+ </li>
+</ul>

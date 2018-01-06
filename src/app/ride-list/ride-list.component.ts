@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {RideService} from '../service/ride.service';
-import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
-import {AuthService}from '../service/auth.service'
-import { FileUploader } from 'ng2-file-upload';
+import {RideService}         from '../service/ride.service';
+import { Router }            from '@angular/router';
+import { environment }       from '../../environments/environment';
+import {AuthService}         from '../service/auth.service'
+import { FileUploader }       from 'ng2-file-upload';
 
 
 @Component({

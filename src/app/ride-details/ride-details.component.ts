@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import {RideService} from '../service/ride.service'
+import { environment } from '../../environments/environment';
+import { FileUploader } from 'ng2-file-upload';
+import { Router, ActivatedRoute } from '@angular/router';
+import {AuthService}from '../service/auth.service'
 
 
 @Component({
@@ -10,23 +13,113 @@ import {RideService} from '../service/ride.service'
   providers : [RideService]
 })
 export class RideDetailsComponent implements OnInit {
-  ride : any;
 
-  constructor(
-    private route : ActivatedRoute,
-    private rideService: RideService,
-  ) { }
+       ride: any;
 
-  ngOnInit() {
-    this.route.params.subscribe(params =>{
-      // this.getRideDetails (params['id']);
-    })
+    paramsId = undefined;
+
+        rideInfo = {
+        rideName: undefined,
+        rideDistance: undefined,
+        ridePosition:"",
+        rideDate:"",
+        rideCategory:"",
+        rideParticipant:"",
+        rideMap:"",
+        comment: ""
+      };
+
+
+      currentUser: any = {};
+
+      logoutError: string;
+
+      rideArray: any[] = [];
+      rideListError: string;
+
+
+      isShowingForm: boolean = false;
+       saveError: string;
+
+       myCoolUploader = new FileUploader({
+         url: environment.apiBase + '/api/rides',
+         itemAlias: 'ridePicture'
+       });
+
+     baseUrl = environment.apiBase;
+
+     constructor(
+       private rideThang: RideService,
+       private authThang: AuthService,
+       private routerThang:Router,
+       private route : ActivatedRoute
+       ) { }
+
+    ngOnInit() {
+      this.authThang.checklogin()
+        .then((userFromApi) => {
+            this.currentUser = userFromApi;
+            this.route.params.subscribe(params => {
+              this.getRideDetails(params['id']);
+            })
+            })
+        .catch(() => {
+            this.routerThang.navigate(['/login']);
+        });
+
+    }
+
+    showRideForm() {
+      this.isShowingForm = true;
+    } // close showCamelForm()
+
+   editRide(){
+     this.rideThang.edit(this.ride._id)
+     .subscribe(() => {
+       this.routerThang.navigate(['']);
+     });
+
+
+   }
+    getRideDetails(id) {
+      this.rideThang.get(id)
+      .subscribe((ride) =>{
+        // console.log('RES = ', ride);
+        this.ride = ride;
+      });
+    }
+
+
+    deleteRide() {
+      if (window.confirm('Are you sure?')) {
+        this.rideThang.remove(this.ride._id)
+        .subscribe(() => {
+        this.routerThang.navigate(['rides']);
+        });
+      }
+    }
   }
-  // getRideDetails(id) {
-  //   // this.rideService.get(id)
-  //   .subscribe((ride)=>{
-  //     this.ride = ride;
-  //   })
+  //   showReviewForm() {
+  //     this.isShowingForm = true;
+  //   }//close showRecipeForm();
+  // getParamsId(){
+  // this.route.params.subscribe(params => {
+  //   this.saveNewComment(params['id']);
+  // })
   // }
 
-}
+  //
+  // saveNewComment(id) {
+  //   this.rideThang.newComment(this.commentInfo, id)
+  //     .subscribe(
+  //       (newReviewFromApi) => {
+  //         this.ride.comment.push(newCommentFromApi);
+  //         this.isShowingForm = false;
+  //         this.CommentInfo = {
+  //           reviewRating: undefined,
+  //           reviewReview: ''
+  //         };//close this.reviewInfo
+  //         this.saveError = 'There was an error saving the review.';
+  //       }//close newReviewFromApi
+  //     );//close subscribe
+  // }//close saveNewReview

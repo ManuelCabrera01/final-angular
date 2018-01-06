@@ -1,73 +1,71 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router,ActivatedRoute}            from '@angular/router';
+import {environment }       from '../../environments/environment';
+import {RideService}         from '../service/ride.service';
+import {AuthService}         from '../service/auth.service';
+import {ProfileService}      from '../service/profile.service';
+import {FileUploader }       from 'ng2-file-upload';
+
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [AuthService, ProfileService, ProfileService]
+
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+    ride: any;
+    currentUser: any = {};
+    userRideArray: any[] = [];
+    rideListError: string;
+    baseUrl = environment.apiBase;
+
+  constructor(
+    private routerThang: Router,
+    private route: ActivatedRoute,
+    private authThang: AuthService,
+    private rideThang: RideService,
+    private profileThang: ProfileService
+  ) { }
 
   ngOnInit() {
-  }
-  //
-  // saveNewRide() {
-  //   // if no picture, regular AJAX upload
-  //   if (this.uploaderFiles.getNotUploadedItems().length === 0) {
-  //     this.saveCamelNoPicture();
-  //   }
-  //
-  //   // else, upload pictures with uploader
-  //   else {
-  //     this.saveCamelWithPicture();
-  //   }
-  // } // close saveNewCamel()
-  // private saveCamelNoPicture() {
-  //   this.camelThang.newCamel(this.camelInfo)
-  //     .subscribe(
-  //       (newCamelFromApi) => {
-  //           this.camelArray.push(newCamelFromApi);
-  //           this.isShowingForm = false;
-  //           this.camelInfo = {
-  //             camelName: "",
-  //             camelColor: "#ffffff",
-  //             camelHumps: undefined
-  //           };
-  //           this.saveError = "";
-  //       },
-  //       (err) => {
-  //           this.saveError = 'Don\'t be a dumb 🐫';
-  //       }
-  //     );
-  // } // close saveCamelNoPicture
-  //
-  // private saveCamelWithPicture() {
-  //   this.myCoolUploader.onBuildItemForm = (item, form) => {
-  //       form.append('camelName', this.camelInfo.camelName);
-  //       form.append('camelColor', this.camelInfo.camelColor);
-  //       form.append('camelHumps', this.camelInfo.camelHumps);
-  //   };
-  //
-  //   this.myCoolUploader.onSuccessItem = (item, response) => {
-  //       console.log(item);
-  //       const newCamelFromApi = JSON.parse(response);
-  //       this.camelArray.push(newCamelFromApi);
-  //       this.isShowingForm = false;
-  //       this.camelInfo = {
-  //         camelName: "",
-  //         camelColor: "#ffffff",
-  //         camelHumps: undefined
-  //       };
-  //       this.saveError = "";
-  //   };
-  //
-  //   this.myCoolUploader.onErrorItem = (item, response) => {
-  //       console.log(item, response);
-  //       this.saveError = 'Don\'t be a dumb 🐫';
-  //   };
-  //
-  //   // this is the function that initiates the AJAX request
-  //   this.myCoolUploader.uploadAll();
-  // } // close saveCamelWithPicture
+     this.authThang.checklogin()
+       .then((userFromApi) => {
+           this.currentUser = userFromApi;
+           this.route.params.subscribe(params => {
+             this.getThemProfileRide(params['id']);
+           })      })
+       .catch(() => {
+           this.routerThang.navigate(['/login']);
+       });
+   }
+
+   getThemProfileRide(id) {
+   this.profileThang.getProfile(id)
+   .subscribe(
+     (usersRides) => { this.userRideArray = usersRides },
+     () => {
+       this.rideListError = 'could not retrieve all the recipes'
+     }
+   );
+ }
+
+ editUserInfor(id) {
+    this.profileThang.editUser(this.currentUser._id)
+      .subscribe(() => {
+        this.routerThang.navigate(['']);
+      });
+
+ };
+
+ deleteUser(id) {
+ if (window.confirm('Are you really really sure?')) {
+   this.profileThang.removeUser(this.currentUser._id)
+     .subscribe(() => {
+       this.routerThang.navigate(['/login']);
+     });
+ }
+}
 }
