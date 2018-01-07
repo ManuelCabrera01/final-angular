@@ -35,14 +35,14 @@ export class ProfileComponent implements OnInit {
        .then((userFromApi) => {
            this.currentUser = userFromApi;
            this.route.params.subscribe(params => {
-             this.getThemProfileRide(params['id']);
+             this.getProfile(params['id']);
            })      })
        .catch(() => {
            this.routerThang.navigate(['/login']);
        });
    }
 
-   getThemProfileRide(id) {
+   getProfile(id) {
    this.profileThang.getProfile(id)
    .subscribe(
      (usersRides) => { this.userRideArray = usersRides },
@@ -52,20 +52,20 @@ export class ProfileComponent implements OnInit {
    );
  }
 
- editUserInfor(id) {
-    this.profileThang.editUser(this.currentUser._id)
-      .subscribe(() => {
-        this.routerThang.navigate(['']);
-      });
-
- };
-
- deleteUser(id) {
- if (window.confirm('Are you really really sure?')) {
-   this.profileThang.removeUser(this.currentUser._id)
-     .subscribe(() => {
-       this.routerThang.navigate(['/login']);
-     });
- }
+ // editUserInfor(id) {
+ //    this.profileThang.editUser(this.currentUser._id)
+ //      .subscribe(() => {
+ //        this.routerThang.navigate(['']);
+ //      });
+ //
+ // };
+ //
+ // deleteUser(id) {
+ // if (window.confirm('Are you really really sure?')) {
+ //   this.profileThang.removeUser(this.currentUser._id)
+ //     .subscribe(() => {
+ //       this.routerThang.navigate(['/login']);
+ //     });
+ // }
 }
-}
+// }

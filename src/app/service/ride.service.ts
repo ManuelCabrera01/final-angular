@@ -67,7 +67,7 @@ export class RideService {
         )
         //parse the json
         .map(res => res.json());
-      }//close specific recipe
+      }//close specific ride
 
       edit(id){
       return this.httpThang

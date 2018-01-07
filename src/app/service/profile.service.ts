@@ -22,25 +22,25 @@ export class ProfileService {
  }//close specific recipe
 
 
- editUser(id) {
-      return this.httpThang
-   .put(
-     `${environment.apiBase}/api/profile/${id}`,
-     {withCredentials: true }
-   )
-   //parse the json
-   .map(res => res.json());
- }//close edit user info
-
-
-  removeUser(id) {
-        return this.httpThang
-     .delete(
-       `${environment.apiBase}/api/profile/${id}`,
-       {withCredentials: true }
-     )
-     //parse the json
-     .map(res => res.json());
+ // editUser(id) {
+ //      return this.httpThang
+ //   .put(
+ //     `${environment.apiBase}/api/profile/${id}`,
+ //     {withCredentials: true }
+ //   )
+ //   //parse the json
+ //   .map(res => res.json());
+ // }//close edit user info
+ //
+ //
+ //  removeUser(id) {
+ //        return this.httpThang
+ //     .delete(
+ //       `${environment.apiBase}/api/profile/${id}`,
+ //       {withCredentials: true }
+ //     )
+ //     //parse the json
+ //     .map(res => res.json());
 }
-}
+// }
 //delete user form db

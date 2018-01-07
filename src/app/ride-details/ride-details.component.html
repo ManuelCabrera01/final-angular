@@ -9,8 +9,10 @@
         <p> participant: {{ride.participant}}</p>
         <!-- <p>{{ride.user}}</p> -->
 
-<button (click)="deleteRide()"> Delete </button>
       </div>
+      <!-- <div *ngIf = "currentUser._id === ride.user?._id"> -->
+
+      <button (click)="deleteRide()"> Delete </button>
 
 
 
@@ -38,5 +40,5 @@
           <button> Save  </button>
       </form>
       </div>
-
+  <!-- </div> -->
       <!-- </div> -->

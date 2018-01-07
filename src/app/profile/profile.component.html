@@ -1,13 +1,15 @@
-<p>
-  profile works!
-</p>
+<h2>{{currentUser.username}}</h2>
+<hr>
+
+ <h2>{{currentUser.username}} is a :  {{currentUser.category}} category!</h2>
+
 <ul>
  <li *ngFor="let ride of userRideArray">
    <h3> {{ ride.name }} </h3>
-   <p>
-     Owned by: {{ ride.user.userName }}
-   </p>
-   <a [routerLink]="['/ride', ride._id]"> View Details </a>
+   <p> date {{ride.date}} </p>
+    <p>category {{ride.category}}</p>
+  <p>distance {{ride.distance}} miles</p>
+   <a [routerLink]="['/rides', ride._id]"> View Details </a>
 
  </li>
 </ul>

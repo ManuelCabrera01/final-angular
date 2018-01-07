@@ -28,7 +28,7 @@ isShowingForm: boolean = false;
 rideInfo = {
     rideName: undefined,
     rideDistance: undefined,
-    ridePosition:"",
+    // ridePosition:"",
     rideDate:"",
     rideCategory:"",
     rideParticipant:"",
@@ -111,7 +111,7 @@ baseUrl = environment.apiBase;
               this.rideInfo = {
                 rideName: undefined,
                 rideDistance: undefined,
-                ridePosition:"",
+                // ridePosition:"",
                 rideDate:"",
                 rideCategory:"",
                 rideParticipant:"",
@@ -128,14 +128,14 @@ baseUrl = environment.apiBase;
 
     private saveRideWithPicture() {
       this.myCoolUploader.onBuildItemForm = (item, form) => {
-          form.append('rideNamee', this.rideInfo.rideName);
-          form.append('rideDistance', this.rideInfo.rideDistance);
-          form.append('ridePosition', this.rideInfo.ridePosition);
-          form.append('rideDate', this.rideInfo.rideDate);
-          form.append('rideCategory', this.rideInfo.rideCategory);
-          form.append('ridePosition', this.rideInfo.ridePosition);
-          form.append('rideParticipant', this.rideInfo.rideParticipant);
-          form.append('rideMap', this.rideInfo.rideMap);
+          form.append('rideNamee',        this.rideInfo.rideName);
+          form.append('rideDistance',     this.rideInfo.rideDistance);
+          // form.append('ridePosition',     this.rideInfo.ridePosition);
+          form.append('rideDate',         this.rideInfo.rideDate);
+          form.append('rideCategory',     this.rideInfo.rideCategory);
+          // form.append('ridePosition',     this.rideInfo.ridePosition);
+          form.append('rideParticipant',  this.rideInfo.rideParticipant);
+          form.append('rideMap',          this.rideInfo.rideMap);
       };
 
       this.myCoolUploader.onSuccessItem = (item, response) => {
@@ -146,7 +146,7 @@ baseUrl = environment.apiBase;
           this.rideInfo = {
             rideName: undefined,
             rideDistance: undefined,
-            ridePosition:"",
+            // ridePosition:"",
             rideDate:"",
             rideCategory:"",
             rideParticipant:"",
