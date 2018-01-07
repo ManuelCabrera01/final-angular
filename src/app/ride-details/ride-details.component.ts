@@ -59,7 +59,6 @@ export class RideDetailsComponent implements OnInit {
       this.authThang.checklogin()
         .then((userFromApi) => {
             this.currentUser = userFromApi;
-            console.log(userFromApi);
             this.route.params.subscribe(params => {
               this.getRideDetails(params['id']);
             })

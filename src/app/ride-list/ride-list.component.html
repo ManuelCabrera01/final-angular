@@ -1,3 +1,6 @@
+<div style="text-align:center">
+
+
 <header>
   <p> Hello, {{ currentUser.username }}. </p>
 
@@ -7,7 +10,7 @@
   </p>
 </header>
 
-*ngfor "let theUser of currentUser"
+
  <div *ngIf="currentUser">
    <h2> You are now logged in as {{ currentUser.username }}!! </h2>
  <!-- <pre> {{ user | json }} </pre> -->
@@ -16,7 +19,7 @@
 
  <!-- <a [routerLink]="['profile']"> profile </a> -->
  <!-- <a [routerLink]="['rides', oneRide._id]"> View Details </a> -->
-
+</div>
  <h3>ride list</h3>
 
  <p *ngIf="rideListError" class="error">
@@ -77,13 +80,13 @@
     </b>
   </p> -->
     <p>
-      distance: {{ oneRide.distance}}
+      distance: {{ oneRide.distance}} miles
       <br>
       category : {{oneRide.category}}
       <br>
       date : {{oneRide.date}}
     </p>
-      <a [routerLink]="['profile', oneRide.user._id]"> profile </a>
+      <a [routerLink]="['profile', oneRide.user._id]"> more.. </a>
       <br>
     <a [routerLink]="['rides', oneRide._id]"> View Details </a>
 
