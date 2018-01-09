@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {RideService} from '../service/ride.service'
-import { environment } from '../../environments/environment';
-import { FileUploader } from 'ng2-file-upload';
+import { Component, OnInit }      from '@angular/core';
+import { RideService }            from '../service/ride.service'
+import { environment }            from '../../environments/environment';
+import { FileUploader }           from 'ng2-file-upload';
 import { Router, ActivatedRoute } from '@angular/router';
-import {AuthService}from '../service/auth.service'
+import { AuthService }            from '../service/auth.service'
 
 
 @Component({
@@ -14,32 +14,34 @@ import {AuthService}from '../service/auth.service'
 })
 export class RideDetailsComponent implements OnInit {
 
-       ride: any;
 
-    paramsId = undefined;
+
+         paramsId = undefined;
+         ride: any;
+
+         commentInfo={
+           commentContent:""
+         };
 
         rideInfo = {
-        rideName: undefined,
-        rideDistance: undefined,
-        ridePosition:"",
-        rideDate:"",
-        rideCategory:"",
-        rideParticipant:"",
-        rideMap:"",
-        comment: ""
-      };
+          rideName: undefined,
+          rideDistance: undefined,
+          ridePosition:"",
+          rideDate:"",
+          rideCategory:"",
+          rideParticipant:"",
+          rideMap:"",
+          comment: ""
+        };
 
 
       currentUser: any = {};
-
+      commentArray:any[] =[];
       logoutError: string;
-
-      rideArray: any[] = [];
       rideListError: string;
-
-
       isShowingForm: boolean = false;
-       saveError: string;
+      saveError: string;
+
 
        myCoolUploader = new FileUploader({
          url: environment.apiBase + '/api/rides',
@@ -84,7 +86,7 @@ export class RideDetailsComponent implements OnInit {
     getRideDetails(id) {
       this.rideThang.get(id)
       .subscribe((ride) =>{
-        // console.log('RES = ', ride);
+        console.log('Response from the api = ', ride.theComment.1.content);
         this.ride = ride;
       });
     }

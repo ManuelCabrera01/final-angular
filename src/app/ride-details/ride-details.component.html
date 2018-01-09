@@ -1,13 +1,23 @@
 
 <a [routerLink]="['/rides']"> Back to list </a>
 <div *ngIf="ride">
-        <h2> {{ ride.name }}</h2>
-        <h3>distace :{{ride.distance}}</h3>
-        <p>  date :{{ride.date}} </p>
+        <h2> {{ ride.theRide.name }}</h2>
+        <h3>distace :{{ride.theRide.distance}}</h3>
+        <p>  date: {{ride.theRide.date|date:'dd/MM/yyyy'}} </p>
         <!-- <h2>{{ride.user.userName}}</h2> -->
-        <p> category: {{ride.category}}</p>
-        <p> participant: {{ride.participant}}</p>
+        <p> category: {{ride.theRide.category}}</p>
+        <p> participant: {{ride.theRide.participant}}</p>
         <!-- <p>{{ride.user}}</p> -->
+
+        <!-- *ngFor="let oneComment of commentArray"> -->
+        <ul>comment
+    <li *ngFor="let oneComment of ride.theComment">
+     {{oneComment.content}}
+      <br>
+    </li>
+    <!-- </li> -->
+  </ul>
+
 
       </div>
       <!-- <div *ngIf = "currentUser._id === ride.user?._id"> -->

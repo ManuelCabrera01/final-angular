@@ -84,7 +84,7 @@
       <br>
       category : {{oneRide.category}}
       <br>
-      date : {{oneRide.date}}
+      date : {{oneRide.date|date:'dd/MM/yyyy'}}
     </p>
       <a [routerLink]="['profile', oneRide.user._id]"> more.. </a>
       <br>

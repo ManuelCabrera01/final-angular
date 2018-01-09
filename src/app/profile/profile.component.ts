@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
     private profileThang: ProfileService
   ) { }
 
+
   ngOnInit() {
      this.authThang.checklogin()
        .then((userFromApi) => {
@@ -45,8 +46,10 @@ export class ProfileComponent implements OnInit {
    getProfile(id) {
    this.profileThang.getProfile(id)
    .subscribe(
-     (usersRides) => { this.userRideArray = usersRides },
+     (usersRides) => { this.userRideArray = usersRides
+      },
      () => {
+
        this.rideListError = 'could not retrieve all the recipes'
      }
    );

@@ -13,6 +13,7 @@ import { CommentComponent } from './comment/comment.component';
 import { RideService } from './service/ride.service';
 import { AuthService } from './service/auth.service';
 import { ProfileComponent } from './profile/profile.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
@@ -24,6 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
     AuthComponent,
     CommentComponent,
     ProfileComponent,
+    FilterPipe,
 
   ],
   imports: [
