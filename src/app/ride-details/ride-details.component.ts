@@ -13,19 +13,29 @@ import { AuthService }            from '../service/auth.service'
   providers : [RideService]
 })
 export class RideDetailsComponent implements OnInit {
+  pointRide(event){
+  this.lat= event.coords.lat,
+  this.lng = event.coords.lng
+  }
+// map setings
+  // title: string = 'My first AGM project';
+   lat: number = 51.678418;
+   lng: number = 7.809007;
 
+// end of maps settings
 
-
+ride:any;
          paramsId = undefined;
-         ride: any;
+         theRide: any;
+         participant:any;
 
          commentInfo={
-           commentContent:""
-         };
+             commentContent:''
+           };
 
         rideInfo = {
-          rideName: undefined,
-          rideDistance: undefined,
+          rideName: '',
+          rideDistance: '',
           ridePosition:"",
           rideDate:"",
           rideCategory:"",
@@ -59,6 +69,7 @@ export class RideDetailsComponent implements OnInit {
 
     ngOnInit() {
       this.authThang.checklogin()
+      // console.log("MY RIDE = ", this.theRide.ride.user);
         .then((userFromApi) => {
             this.currentUser = userFromApi;
             this.route.params.subscribe(params => {
@@ -70,27 +81,81 @@ export class RideDetailsComponent implements OnInit {
         });
 
     }
+    showCommentForm() {
+      this.isShowingForm = true;
+    }
 
     showRideForm() {
       this.isShowingForm = true;
     } // close showCamelForm()
 
-   editRide(){
-     this.rideThang.edit(this.rideInfo)
-     .subscribe(() => {
-       this.routerThang.navigate(['']);
-     });
+   editRide(id){
+    //  console.log("MY RIDE = ", this.ride.theRide._id);
+     this.rideThang.edit(this.ride.theRide._id, this.rideInfo) .toPromise()
+     .then((rideFromApi)=>{
+       this.ride = {
+    updateName: '',
+    rupdateDistance:'',
+    updateCategory:'',
+    updateDate:''
 
 
+  };
+  this.ride = this.rideInfo;
+      // clear error message
+      this.saveError = "";
+})
+.catch((err) => {
+      const parsedError = err.json();
+      this.saveError = parsedError.message + '';
+    });
    }
+
+   joinRide() {
+ this.ride.participant.push(this.currentUser.name);
+ }
     getRideDetails(id) {
       this.rideThang.get(id)
       .subscribe((ride) =>{
-        console.log('Response from the api = ', ride.theComment.1.content);
+        // console.log('Response from the api = ', ride.theComment);
         this.ride = ride;
       });
     }
+    saveNewComment(id) {
+      console.log("MY comment = ", this.ride.theRide.user);
+        this.rideThang.newComment(this.ride.theRide._id, this.commentInfo)
+          .subscribe(
+            (newCommentFromApi) => {
+                this.ride.theComment.push(newCommentFromApi);
+                this.isShowingForm = false;
+                this.commentInfo = {
+                  commentContent: ""
+                };
+                this.saveError = "";
+            },
+            (err) => {
+                this.saveError = 'you can\'t create a ride';
+            }
+          );
+      } // close saveCamelNoPicture
 
+
+      // saveNewReview(id) {
+      //   this.recipeThang.newReview(this.reviewInfo, id)
+      //     .subscribe(
+      //       (newReviewFromApi) => {
+      //         this.recipe.review.push(newReviewFromApi);
+      //         this.isShowingForm = false;
+      //         this.reviewInfo = {
+      //           reviewRating: undefined,
+      //           reviewReview: ''
+      //         };//close this.reviewInfo
+      //         this.saveError = 'There was an error saving the review.';
+      //       }//close newReviewFromApi
+      //     );//close subscribe
+      // }//close saveNewReview
+      //
+      // }
 
     deleteRide() {
       if (window.confirm('Are you sure?')) {
@@ -100,6 +165,10 @@ export class RideDetailsComponent implements OnInit {
         });
       }
     }
+
+    //  YOUR MAP LOGIC IN HERE ................>>>>>>>>>>>>>>>>>>>>>>
+
+    //  END OF YOUR MAP LOGIC IN HERE ................>>>>>>>>>>>>>>>>>>>>>>
   }
   //   showReviewForm() {
   //     this.isShowingForm = true;

@@ -15,6 +15,7 @@ import { AuthService } from './service/auth.service';
 import { ProfileComponent } from './profile/profile.component';
 import { FilterPipe } from './pipes/filter.pipe';
 
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -33,7 +34,10 @@ import { FilterPipe } from './pipes/filter.pipe';
      FormsModule,
      HttpModule,
      RouterModule.forRoot(routes),
-     FileUploadModule
+     FileUploadModule,
+     AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBq14RxyVWcfcjRmJ8vFCDIoA2f-HkBTBs'
+    })
   ],
   providers: [
       RideService,

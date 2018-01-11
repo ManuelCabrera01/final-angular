@@ -14,15 +14,14 @@ import { FileUploader }       from 'ng2-file-upload';
 })
 export class RideListComponent implements OnInit {
 
-currentUser: any = {};
-
-logoutError: string;
-
-rideArray: any[] = [];
-rideListError: string;
+  currentUser: any = {};
+  logoutError: string;
+  rideArray: any[] = [];
+  rideListError: string;
 
 
-isShowingForm: boolean = false;
+  pattern: string;
+  isShowingForm: boolean = false;
 
 
 rideInfo = {
@@ -64,6 +63,10 @@ baseUrl = environment.apiBase;
            this.routerThang.navigate(['/rides']);
        });
    } // close ngOnInit()
+
+   addItem(item) {
+       this.rideArray.push({name: item});
+     }
 
       logMeOutPls() {
     this.authThang.logout()

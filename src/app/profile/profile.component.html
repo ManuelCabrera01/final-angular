@@ -5,10 +5,11 @@
 
 <ul>
  <li *ngFor="let ride of userRideArray">
-   <h3> name {{ ride.name }} </h3>
+   <h1>leader: {{ride.user.username}}</h1>
+   <h3> name: {{ ride.name }} </h3>
    <p> date:{{ride.date|date:'dd/MM/yyyy'}} </p>
-    <p>category {{ride.category}}</p>
-  <p>distance {{ride.distance}} miles</p>
+    <p>category: {{ride.category}}</p>
+  <p>distance: {{ride.distance}} miles</p>
    <a [routerLink]="['/rides', ride._id]"> View Details </a>
 
  </li>

@@ -56,12 +56,14 @@ export class ProfileComponent implements OnInit {
  }
 
  // editUserInfor(id) {
- //    this.profileThang.editUser(this.currentUser._id)
- //      .subscribe(() => {
- //        this.routerThang.navigate(['']);
- //      });
- //
- // };
+ edituser(id){
+   console.log("MY RIDE = ", this.currentUser._id);
+   this.profileThang.editUser(this.currentUser._id)
+   .subscribe(() => {
+     this.routerThang.navigate(['detaill']);
+   });
+ }
+
  //
  // deleteUser(id) {
  // if (window.confirm('Are you really really sure?')) {
@@ -70,5 +72,5 @@ export class ProfileComponent implements OnInit {
  //       this.routerThang.navigate(['/login']);
  //     });
  // }
+
 }
-// }

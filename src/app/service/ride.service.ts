@@ -30,6 +30,22 @@ export class RideService {
          .map(res => res.json());
    } // close newRide()
 
+   newComment(id, componentInfo) {
+      return this.httpThang
+        .post(
+          `${environment.apiBase}/api/rides/${id}/comment`,
+
+          // Form body information to send to the back end (req.body)
+          componentInfo,
+
+          // Send the cookies across domains
+          { withCredentials: true }
+        )
+
+        // Parse the JSON
+        .map(res => res.json());
+  } // close newRide()
+
 //   editRide(componentInfo) {
 //     return this.httpThang
 //       .post(
@@ -69,7 +85,7 @@ export class RideService {
         .map(res => res.json());
       }//close specific ride
 
-      edit(id){
+      edit(id, componentInfo){
       return this.httpThang
       .put(
         `${environment.apiBase}/api/rides/${id}/edit`,

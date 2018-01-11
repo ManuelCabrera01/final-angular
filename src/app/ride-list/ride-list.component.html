@@ -8,6 +8,20 @@
   <p *ngIf="logoutError" class="error">
     {{ logoutError }}
   </p>
+
+  <div>
+     <label for="ride-name"> Search thing: </label>
+     <input id="ride-name" placeholder="thing name"
+             type="text" [(ngModel)]="pattern">
+   </div>
+
+
+
+   <!-- <h4> Stuff list </h4> -->
+
+      <!-- <li *ngFor=" oneRide of rideArray | filter:'name':pattern; let i = index">
+        {{ i+1 }}) {{ ride.name }}
+      </li> -->
 </header>
 
 
@@ -67,18 +81,18 @@
  <hr>
 
  <ul>
-  <li *ngFor="let oneRide of rideArray">
+  <li *ngFor="let oneRide of rideArray| filter:'name':pattern">
     <h3> {{ oneRide.name }} </h3>
     <p>
     Owned by:
-    <!-- <b *ngIf="oneRide.user?._id !== currentUser._id">
+    <b *ngIf="oneRide.user?._id !== currentUser._id">
       {{ oneRide.user.username }}
     </b>
 
     <b *ngIf="oneRide.user?._id === currentUser._id">
       YOU
     </b>
-  </p> -->
+  </p>
     <p>
       distance: {{ oneRide.distance}} miles
       <br>
@@ -86,7 +100,7 @@
       <br>
       date : {{oneRide.date|date:'dd/MM/yyyy'}}
     </p>
-      <a [routerLink]="['profile', oneRide.user._id]"> more.. </a>
+      <a [routerLink]="['profile', oneRide.user._id]"> profile </a>
       <br>
     <a [routerLink]="['rides', oneRide._id]"> View Details </a>
 
