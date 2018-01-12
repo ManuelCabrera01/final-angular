@@ -89,6 +89,15 @@ export class RideService {
       return this.httpThang
       .put(
         `${environment.apiBase}/api/rides/${id}/edit`,
+        {
+            updateName: componentInfo.updateName,
+                updateDistanc: componentInfo.updateDistanc,
+              rideUsername: componentInfo.clientUsername,
+              updateCategory: componentInfo.updateCategory,
+              updateDate: componentInfo.updateDate,
+            
+          },
+
         {withCredentials: true }
       )
       //parse the json

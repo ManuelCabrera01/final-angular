@@ -1,7 +1,7 @@
 
 <a [routerLink]="['/rides']"> Back to list </a>
 <div *ngIf="ride">
-        <h1>{{ride.theRide.user.username}}</h1>
+        <h1>{{ride.theRide.user}}</h1>
         <h2> {{ ride.theRide.name }}</h2>
         <h3>distace :{{ride.theRide.distance}}</h3>
         <p>  date: {{ride.theRide.date|date:'dd/MM/yyyy'}} </p>

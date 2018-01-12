@@ -44,7 +44,7 @@ ride:any;
           comment: ""
         };
 
-
+      user:any;
       currentUser: any = {};
       commentArray:any[] =[];
       logoutError: string;
@@ -90,12 +90,12 @@ ride:any;
     } // close showCamelForm()
 
    editRide(id){
-    //  console.log("MY RIDE = ", this.ride.theRide._id);
+     console.log("MY RIDE = ", this.ride.theRide.user);
      this.rideThang.edit(this.ride.theRide._id, this.rideInfo) .toPromise()
      .then((rideFromApi)=>{
        this.ride = {
     updateName: '',
-    rupdateDistance:'',
+    updateDistance:'',
     updateCategory:'',
     updateDate:''
 

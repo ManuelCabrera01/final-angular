@@ -1,28 +1,44 @@
+
+<div class="container">
+
+
+
 <div style="text-align:center">
+<!-- ........................... -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+      <p> Hello, {{ currentUser.username }}. </p>
+  </div>
 
-
-<header>
-  <p> Hello, {{ currentUser.username }}. </p>
-
+  <div class="panel-body">
   <button (click)="logMeOutPls()"> Log Out </button>
   <p *ngIf="logoutError" class="error">
     {{ logoutError }}
   </p>
 
   <div>
-     <label for="ride-name"> Search thing: </label>
-     <input id="ride-name" placeholder="thing name"
-             type="text" [(ngModel)]="pattern">
-   </div>
+    <label for="ride-name"> Search thing: </label>
+    <input id="ride-name" placeholder="thing name"
+    type="text" [(ngModel)]="pattern">
+  </div>
+
+  </div>
+</div>
 
 
 
-   <!-- <h4> Stuff list </h4> -->
+    <!-- <h4> Stuff list </h4> -->
 
-      <!-- <li *ngFor=" oneRide of rideArray | filter:'name':pattern; let i = index">
-        {{ i+1 }}) {{ ride.name }}
-      </li> -->
-</header>
+    <!-- <li *ngFor=" oneRide of rideArray | filter:'name':pattern; let i = index">
+    {{ i+1 }}) {{ ride.name }}
+  </li> -->
+
+
+
+</div>
+<!-- ........................... -->
+
+
 
 
  <div *ngIf="currentUser">
