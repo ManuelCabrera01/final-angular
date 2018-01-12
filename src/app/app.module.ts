@@ -14,6 +14,7 @@ import { RideService } from './service/ride.service';
 import { AuthService } from './service/auth.service';
 import { ProfileComponent } from './profile/profile.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -30,6 +31,7 @@ import { AgmCoreModule } from '@agm/core';
 
   ],
   imports: [
+     Ng2CarouselamosModule,
     BrowserModule,
      FormsModule,
      HttpModule,

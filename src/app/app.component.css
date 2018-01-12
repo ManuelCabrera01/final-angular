@@ -1,5 +1,24 @@
-.jumbotron {
-  body {
-    background-image: ../img/8.jpg;
+h1{
+  font-family: Courier New;
 }
+
+.jumbotron {
+  background-color:  #8e867f;
+
+}
+.tLineu{
+  /*float: left;*/
+  top: -14px;
+  width: 87%;
+     height: 47px;
+     border-bottom: 10px solid #2a2b2c;
+     position:absolute;
+}
+.tLined{
+  /*float: left;*/
+  top: 91px;
+  width: 87%;
+     height: 47px;
+     border-bottom: 10px solid #2a2b2c;
+     position:absolute;
 }

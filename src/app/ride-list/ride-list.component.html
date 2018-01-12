@@ -1,39 +1,54 @@
 
 <div class="container">
-
-
-
 <div style="text-align:center">
 <!-- ........................... -->
+<div class="carrusel">
+
+  <div ng2-carouselamos class = 'slider'
+  [items]='items'
+  [width]='900'
+  [$prev]= 'prev'
+  [$next] ='next'
+  [$item]= 'item'
+  ></div>
+  <ng-template #prev>
+    <img src="/assets/images/if_icon-ios7-arrow-back_211686.png" id="left" />
+  </ng-template>
+
+  <ng-template #next>
+    <img src="/assets/images/if_icon-ios7-arrow-forward_211688 (1).png" id="ridth" />
+  </ng-template>
+
+  <ng-template #item let-item let-i="index">
+    <div class="items">
+      <img src="{{item.name}}" >
+
+    </div>
+  </ng-template>
+</div>
+<div id="redLine">
+
+</div>
+
 <div class="panel panel-primary">
   <div class="panel-heading">
-      <p> Hello, {{ currentUser.username }}. </p>
+      <p> Hi, {{ currentUser.username }} welcome back, are you ready for a new ride? </p>
   </div>
 
   <div class="panel-body">
   <button (click)="logMeOutPls()"> Log Out </button>
   <p *ngIf="logoutError" class="error">
     {{ logoutError }}
-  </p>
+  </p>&nbsp;&nbsp;
+  <button *ngIf="!isShowingForm" (click)="showRideForm()">
+    Add Ride
+  </button>
 
-  <div>
     <label for="ride-name"> Search thing: </label>
     <input id="ride-name" placeholder="thing name"
     type="text" [(ngModel)]="pattern">
   </div>
-
-  </div>
 </div>
-
-
-
-    <!-- <h4> Stuff list </h4> -->
-
-    <!-- <li *ngFor=" oneRide of rideArray | filter:'name':pattern; let i = index">
-    {{ i+1 }}) {{ ride.name }}
-  </li> -->
-
-
 
 </div>
 <!-- ........................... -->
@@ -49,7 +64,7 @@
 
  <!-- <a [routerLink]="['profile']"> profile </a> -->
  <!-- <a [routerLink]="['rides', oneRide._id]"> View Details </a> -->
-</div>
+
  <h3>ride list</h3>
 
  <p *ngIf="rideListError" class="error">
@@ -57,9 +72,7 @@
  </p>
 
  <hr>
- <button *ngIf="!isShowingForm" (click)="showRideForm()">
-   Add Ride
- </button>
+
 
  <div *ngIf = "isShowingForm">
    <h3>Create a New Ride</h3>
@@ -95,9 +108,13 @@
  </div>
 
  <hr>
+<div class="row">
 
+
+
+</div>
  <ul>
-  <li *ngFor="let oneRide of rideArray| filter:'name':pattern">
+  <li class="col-md-4" *ngFor="let oneRide of rideArray| filter:'name':pattern">
     <h3> {{ oneRide.name }} </h3>
     <p>
     Owned by:
@@ -123,6 +140,7 @@
 
   </li>
 </ul>
+</div>
 <!-- <div class="picture-wrap" >
 <img *ngIf="ride.picture"
 [src]="baseUrl + ride.picture">

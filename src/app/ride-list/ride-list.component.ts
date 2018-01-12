@@ -4,6 +4,7 @@ import { Router }            from '@angular/router';
 import { environment }       from '../../environments/environment';
 import {AuthService}         from '../service/auth.service'
 import { FileUploader }       from 'ng2-file-upload';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { FileUploader }       from 'ng2-file-upload';
   //  providers: [RideService]
 })
 export class RideListComponent implements OnInit {
+
+items :Array <any> = []
 
   currentUser: any = {};
   logoutError: string;
@@ -47,9 +50,27 @@ baseUrl = environment.apiBase;
   constructor(
     private rideThang: RideService,
     private authThang: AuthService,
-    private routerThang:Router
-    ) { }
+    private routerThang:Router,
 
+    ) {
+    this.items= [
+      {name:'/assets/images/blackandwhite.jpeg'},
+      {name:'/assets/images/blackandwhite(1).jpeg'},
+      {name:'/assets/images/blackandwhite(2).jpeg'},
+      {name:'/assets/images/blackandwhite(3).jpeg'},
+      {name:'/assets/images/blackandwhite(4).jpeg'},
+      {name:'/assets/images/blackandwhite.jpeg'},
+      {name:'/assets/images/blackandwhite(1).jpeg'},
+      {name:'/assets/images/blackandwhite(2).jpeg'},
+      {name:'/assets/images/blackandwhite(3).jpeg'},
+      {name:'/assets/images/blackandwhite(4).jpeg'},
+      {name:'/assets/images/blackandwhite.jpeg'},
+      {name:'/assets/images/blackandwhite(1).jpeg'},
+      {name:'/assets/images/blackandwhite(2).jpeg'},
+      {name:'/assets/images/blackandwhite(3).jpeg'},
+      {name:'/assets/images/blackandwhite(4).jpeg'},
+    ]
+}
     ngOnInit() {
      // this.getThemRides();
      this.authThang.checklogin()

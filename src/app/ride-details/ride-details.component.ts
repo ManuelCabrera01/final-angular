@@ -27,7 +27,7 @@ export class RideDetailsComponent implements OnInit {
 ride:any;
          paramsId = undefined;
          theRide: any;
-         participant:any;
+         participant: Array<Object> = [];
 
          commentInfo={
              commentContent:''
@@ -111,8 +111,8 @@ ride:any;
     });
    }
 
-   joinRide() {
- this.ride.participant.push(this.currentUser.name);
+   joinRide(id) {
+ this.ride.participant.unshift(this.currentUser.username);
  }
     getRideDetails(id) {
       this.rideThang.get(id)

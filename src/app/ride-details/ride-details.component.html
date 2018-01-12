@@ -1,3 +1,5 @@
+<div class="container">
+
 
 <a [routerLink]="['/rides']"> Back to list </a>
 <div *ngIf="ride">
@@ -8,32 +10,28 @@
         <!-- <h2>{{ride.user.userName}}</h2> -->
         <p> category: {{ride.theRide.category}}</p>
         <p> participant: {{ride.theRide.participant}}</p>
+        <button class="btn btn-primary" click="joinRide()" >join</button>
+
         <p>MAP...</p>
 
         <!--  PLACE YOPUR MAP IN NHERE-->
-
-
     <!-- this creates a google map on the page with the given lat/lng from -->
     <!-- the component as the initial center of the map: -->
     <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
       <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
       <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
-
-
     </agm-map>
-
         <!-- END OF YOUR MAP -->
-        <button click="joinRide()" name="button">join</button>
 
 
-        <!-- *ngFor="let oneComment of commentArray"> -->
-        <ul>comment
-    <li *ngFor="let oneComment of ride.theComment">
+
+      <ul>comment
+        <li *ngFor="let oneComment of ride.theComment">
      {{oneComment.content}}
       <br>
-    </li>
+      </li>
+    </ul>
 
-  </ul>
   <button *ngIf="!isShowingForm" (click)="showCommentForm()">
     create a comment
   </button>
@@ -91,3 +89,4 @@
         <button> Save  </button>
        </form>
       </div>
+</div>
