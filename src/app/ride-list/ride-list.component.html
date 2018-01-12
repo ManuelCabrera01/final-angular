@@ -1,9 +1,7 @@
-
-<div class="container">
+<div class="container-fluid">
 <div style="text-align:center">
-<!-- ........................... -->
+<!-- ...........carruse................ -->
 <div class="carrusel">
-
   <div ng2-carouselamos class = 'slider'
   [items]='items'
   [width]='900'
@@ -26,13 +24,12 @@
     </div>
   </ng-template>
 </div>
-<div id="redLine">
-
-</div>
+<!-- ..............carrusel............. -->
+<div id="redLine"></div>/<!--redLine-->
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-      <p> Hi, {{ currentUser.username }} welcome back, are you ready for a new ride? </p>
+    <h2> Hi, <mark>{{ currentUser.username }} </mark> welcome back, are you ready for a new ride? </h2>
   </div>
 
   <div class="panel-body">
@@ -50,69 +47,57 @@
   </div>
 </div>
 
+<div *ngIf = "isShowingForm">
+  <h3>Create a New Ride</h3>
+
+  <p *ngIf = "saveError" class = "error">
+    {{saveError}}
+  </p>
+
+<form (ngSubmit) = "saveNewRide()">
+  <label for="ride-name-input"> Ride Name </label>
+  <input type = "text" id="ride-name-input"
+  placeholder=" tour de france" [(ngModel)] = "rideInfo.rideName" name = "rideName">
+  <br>
+  <label for="ride-distance-input"> miles  </label>
+  <input type = "text" id="ride-distance-input" placeholder=" 100"
+  [(ngModel)] = "rideInfo.rideDistance" name = "rideDistance">
+  <br>
+  <label for="ride-category-input"> category  </label>
+  <input type = "text" id="ride-category-input" placeholder=" A B or C"
+   [(ngModel)] = "rideInfo.rideCategory" name = "rideCategory">
+  <br>
+  <label for="ride-date-input">Enter  date of the ride</label>
+  <input id="ride-date-input" type="date"
+  [(ngModel)] = "rideInfo.rideDate" name = "rideDate">
+ <br>
+  <label for="ride-picture-input"> ride Picture (optional)</label>
+   <input  id="ride-picture-input" type="file" name="ridePicture"
+       ng2FileSelect [uploader]="myCoolUploader">
+    <br>
+
+    <button> Save Ride </button>
+</form>
 </div>
-<!-- ........................... -->
 
-
+<!-- panel primario -->
 
 
  <div *ngIf="currentUser">
-   <h2> You are now logged in as {{ currentUser.username }}!! </h2>
+   <!-- leave current user just in case -->
  <!-- <pre> {{ user | json }} </pre> -->
-
  </div>
 
- <!-- <a [routerLink]="['profile']"> profile </a> -->
- <!-- <a [routerLink]="['rides', oneRide._id]"> View Details </a> -->
 
  <h3>ride list</h3>
-
  <p *ngIf="rideListError" class="error">
    {{ rideListError }}
  </p>
 
  <hr>
-
-
- <div *ngIf = "isShowingForm">
-   <h3>Create a New Ride</h3>
-
-   <p *ngIf = "saveError" class = "error">
-     {{saveError}}
-   </p>
-
- <form (ngSubmit) = "saveNewRide()">
-   <label for="ride-name-input"> Ride Name </label>
-   <input type = "text" id="ride-name-input"
-   placeholder=" tour de france" [(ngModel)] = "rideInfo.rideName" name = "rideName">
-   <br>
-   <label for="ride-distance-input"> miles  </label>
-   <input type = "text" id="ride-distance-input" placeholder=" 100"
-   [(ngModel)] = "rideInfo.rideDistance" name = "rideDistance">
-   <br>
-   <label for="ride-category-input"> category  </label>
-   <input type = "text" id="ride-category-input" placeholder=" A B or C"
-    [(ngModel)] = "rideInfo.rideCategory" name = "rideCategory">
-   <br>
-   <label for="ride-date-input">Enter  date of the ride</label>
-   <input id="ride-date-input" type="date"
-   [(ngModel)] = "rideInfo.rideDate" name = "rideDate">
-  <br>
-   <label for="ride-picture-input"> ride Picture (optional)</label>
-    <input  id="ride-picture-input" type="file" name="ridePicture"
-        ng2FileSelect [uploader]="myCoolUploader">
-     <br>
-
-     <button> Save Ride </button>
- </form>
- </div>
-
  <hr>
+
 <div class="row">
-
-
-
-</div>
  <ul>
   <li class="col-md-4" *ngFor="let oneRide of rideArray| filter:'name':pattern">
     <h3> {{ oneRide.name }} </h3>
@@ -121,11 +106,10 @@
     <b *ngIf="oneRide.user?._id !== currentUser._id">
       {{ oneRide.user.username }}
     </b>
-
     <b *ngIf="oneRide.user?._id === currentUser._id">
       YOU
     </b>
-  </p>
+    </p>
     <p>
       distance: {{ oneRide.distance}} miles
       <br>
@@ -136,16 +120,8 @@
       <a [routerLink]="['profile', oneRide.user._id]"> profile </a>
       <br>
     <a [routerLink]="['rides', oneRide._id]"> View Details </a>
-
-
   </li>
 </ul>
 </div>
-<!-- <div class="picture-wrap" >
-<img *ngIf="ride.picture"
-[src]="baseUrl + ride.picture">
-
-<div *ngIf="!ride.picture" >
-<img  src="/assets/images/kid-riding-bike.jpg"> -->
-<!-- </div>
-</div> -->
+</div>
+</div>

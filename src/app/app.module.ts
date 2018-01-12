@@ -17,6 +17,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 import { AgmCoreModule } from '@agm/core';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AgmCoreModule } from '@agm/core';
     CommentComponent,
     ProfileComponent,
     FilterPipe,
+    NavbarComponent,
 
   ],
   imports: [
