@@ -25,7 +25,7 @@
   </ng-template>
 </div>
 <!-- ..............carrusel............. -->
-<div id="redLine"></div>/<!--redLine-->
+
 
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -33,13 +33,13 @@
   </div>
 
   <div class="panel-body">
-  \
+
   <button *ngIf="!isShowingForm" (click)="showRideForm()">
     Add Ride
   </button>
 
-    <label for="ride-name"> Search thing: </label>
-    <input id="ride-name" placeholder="thing name"
+    <label for="ride-name"> Search rides: </label>
+    <input id="ride-name" placeholder="ride name"
     type="text" [(ngModel)]="pattern">
   </div>
 </div>
