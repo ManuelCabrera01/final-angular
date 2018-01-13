@@ -15,7 +15,16 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 })
 export class RideListComponent implements OnInit {
 
-items :Array <any> = []
+  pointRide(event){
+  this.lat= event.coords.lat,
+  this.lng = event.coords.lng
+  }
+// map setings
+  // title: string = 'My first AGM project';
+   lat: number = 51.678418;
+   lng: number = 7.809007;
+
+   items :Array <any> = []
 
   currentUser: any = {};
   logoutError: string;

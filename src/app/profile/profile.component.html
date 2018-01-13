@@ -10,6 +10,14 @@
    <p> date:{{ride.date|date:'dd/MM/yyyy'}} </p>
     <p>category: {{ride.category}}</p>
   <p>distance: {{ride.distance}} miles</p>
+  <!--  PLACE YOPUR MAP IN NHERE-->
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+<agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+<agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
+</agm-map>
+  <!-- END OF YOUR MAP -->
    <a [routerLink]="['/rides', ride._id]"> View Details </a>
 
  </li>

@@ -29,14 +29,11 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2> Hi, <mark>{{ currentUser.username }} </mark> welcome back, are you ready for a new ride? </h2>
+    <h2> Hi, <mark>{{ currentUser.username }}</mark> welcome back, are you ready for a new ride? </h2>
   </div>
 
   <div class="panel-body">
-  <button (click)="logMeOutPls()"> Log Out </button>
-  <p *ngIf="logoutError" class="error">
-    {{ logoutError }}
-  </p>&nbsp;&nbsp;
+  \
   <button *ngIf="!isShowingForm" (click)="showRideForm()">
     Add Ride
   </button>
@@ -48,11 +45,16 @@
 </div>
 
 <div *ngIf = "isShowingForm">
+  <!-- create a n ew ride form -->
+
+
+
   <h3>Create a New Ride</h3>
 
   <p *ngIf = "saveError" class = "error">
     {{saveError}}
   </p>
+  <div style="text-align:center">
 
 <form (ngSubmit) = "saveNewRide()">
   <label for="ride-name-input"> Ride Name </label>
@@ -71,14 +73,16 @@
   <input id="ride-date-input" type="date"
   [(ngModel)] = "rideInfo.rideDate" name = "rideDate">
  <br>
-  <label for="ride-picture-input"> ride Picture (optional)</label>
-   <input  id="ride-picture-input" type="file" name="ridePicture"
-       ng2FileSelect [uploader]="myCoolUploader">
+
+ <!-- END OF YOUR MAP -->
     <br>
 
     <button> Save Ride </button>
 </form>
 </div>
+</div>
+<!-- create a new ride end -->
+
 
 <!-- panel primario -->
 
@@ -120,8 +124,19 @@
       <a [routerLink]="['profile', oneRide.user._id]"> profile </a>
       <br>
     <a [routerLink]="['rides', oneRide._id]"> View Details </a>
+    <!-- the component as the initial center of the map: -->
+    <!--  PLACE YOPUR MAP IN NHERE-->
+   <!-- this creates a google map on the page with the given lat/lng from -->
+   <!-- the component as the initial center of the map: -->
+   <p>map</p>
+   <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+   <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+   <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
+   </agm-map>
   </li>
 </ul>
 </div>
+
+
 </div>
 </div>

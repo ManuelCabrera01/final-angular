@@ -16,6 +16,15 @@ import {FileUploader }       from 'ng2-file-upload';
 })
 export class ProfileComponent implements OnInit {
 
+  pointRide(event){
+  this.lat= event.coords.lat,
+  this.lng = event.coords.lng
+  }
+// map setings
+  // title: string = 'My first AGM project';
+   lat: number = 51.678418;
+   lng: number = 7.809007;
+
     ride: any;
     currentUser: any = {};
     userRideArray: any[] = [];

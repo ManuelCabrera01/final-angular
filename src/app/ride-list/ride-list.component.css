@@ -32,3 +32,8 @@
 .panel-body{
   background-color: #F2F1ED;
 }
+
+agm-map {
+  height: 300px;
+  width: 300px
+}

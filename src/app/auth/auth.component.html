@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<!-- <div style="text-align:center">
 
 
 <h3> sign up</h3>
@@ -7,7 +7,7 @@
 </p>
 
 <form (ngSubmit)= "signThemUp()">
- <label for="username-input" > username </label>
+ <label  for="username-input" > username </label>
   <input  id = "username-input" type="text" name="usernameValue"
     [(ngModel)]="signUpInfo.username"      name="usernameValue">
   <br>
@@ -39,6 +39,46 @@
  <input  id = "login-pass-input" type="password" name="loginPassword" placeholder="*******"
 [(ngModel)]= "loginInfo.password" >
  <br>
- <button >log in</button>
+
  </form>
-</div>
+</div> -->
+
+
+   <!-- to compare whit the old code -->
+   <div class="container">
+
+      <div class="col-md-6">
+      <div id="logbox">
+     <form (ngSubmit)= "signThemUp()">
+          <p *ngIf="errorMessage" class="error">
+            {{ errorMessage }}
+          </p>
+          <h1>create an account</h1>
+          <input [(ngModel)]="signUpInfo.username"  for="username-input" name="usernameValue" id = "username-input"  type="text" placeholder="What's your username?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
+          <input [(ngModel)]="signUpInfo.password"  for="password-input" name="passwordValue" type="password" placeholder="Choose a password" required="required" class="input pass"/>
+          <input type="submit" value="Sign me up!" class="inputButton"/>
+          <div class="text-center">
+              already have an account? <button>Sign up</button>
+          </div>
+        </form>
+      </div>
+     </div>
+      <!--col-md-6-->
+
+     <div class="col-md-6">
+      <div id="logbox">
+        <form (ngSubmit)= "doLogin()">
+          <h1>account login</h1>
+          <p *ngIf = "loginErrorMessage" class = "error">
+            {{loginErrorMessage}}
+          </p>
+          <input [(ngModel)]="loginInfo.username"  id = "login-username-input" for="login-username-input "  name="username" type="text" placeholder="peter sagan" class="input pass"/>
+          <input [(ngModel)]= "loginInfo.password" id = "login-pass-input"  name="loginPassword" type="password" placeholder="enter your password" required="required" class="input pass"/>
+          <input type="submit" value="log me in!" class="inputButton"/>
+          <div class="text-center">
+                      <a href="#" id="">create an account</a> - <a href="#" id="">forgot password</a>
+                  </div>
+        </form>
+      </div>
+      </div>
+    </div>

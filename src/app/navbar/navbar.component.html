@@ -9,13 +9,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">Project Manager</a>
+            <a class="navbar-brand"></a>
         </div>
          <div class="collapse navbar-collapse"
               [ngClass]="{ 'in': isIn }">
             <ul class="nav navbar-nav">
-                <li><a>Link 1</a></li>
-                <li><a>Link 2</a></li>
+                <!-- <li><a[routerLink]="['/blog']">blog</a></li> -->
+                <li><a [routerLink]="['/rides']">home</a></li>
+                <li><a (click)="logMeOutPls()"> Log Out </a>
+                <p *ngIf="logoutError" class="error">
+                  {{ logoutError }}
+                </p>&nbsp;&nbsp;</li>
             </ul>
         </div>
     </div>

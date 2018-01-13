@@ -24,10 +24,10 @@ export class RideDetailsComponent implements OnInit {
 
 // end of maps settings
 
-ride:any;
+         ride:any;
          paramsId = undefined;
          theRide: any;
-         participant: Array<Object> = [];
+         rideParticipant: {name:string}
 
          commentInfo={
              commentContent:''
@@ -90,7 +90,7 @@ ride:any;
     } // close showCamelForm()
 
    editRide(id){
-     console.log("MY RIDE = ", this.ride.theRide.user);
+     console.log("MY RIDE = ", this.ride.theRide);
      this.rideThang.edit(this.ride.theRide._id, this.rideInfo) .toPromise()
      .then((rideFromApi)=>{
        this.ride = {
@@ -111,9 +111,11 @@ ride:any;
     });
    }
 
-   joinRide(id) {
- this.ride.participant.unshift(this.currentUser.username);
- }
+ //   joinRide(myRider) {
+ // const existingRider =
+ // this.rideParticipant.find(rider=>rider.name === myRider.name);
+ // this.rideParticipant.push(myRider);
+ // }
     getRideDetails(id) {
       this.rideThang.get(id)
       .subscribe((ride) =>{

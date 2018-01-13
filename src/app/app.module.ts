@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { RideListComponent } from './ride-list/ride-list.component';
 import { RideDetailsComponent } from './ride-details/ride-details.component';
 import { AuthComponent } from './auth/auth.component';
-import { CommentComponent } from './comment/comment.component';
+// import { CommentComponent } from './comment/comment.component';
 import { RideService } from './service/ride.service';
 import { AuthService } from './service/auth.service';
 import { ProfileComponent } from './profile/profile.component';
@@ -18,6 +18,7 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 import { AgmCoreModule } from '@agm/core';
 import { NavbarComponent } from './navbar/navbar.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
@@ -26,10 +27,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     RideListComponent,
     RideDetailsComponent,
     AuthComponent,
-    CommentComponent,
+    // CommentComponent,
     ProfileComponent,
     FilterPipe,
     NavbarComponent,
+    BlogComponent,
 
   ],
   imports: [

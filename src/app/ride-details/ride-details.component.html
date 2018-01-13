@@ -24,13 +24,24 @@
         <!-- END OF YOUR MAP -->
 
 
+<!--commentsexample  -->
 
-      <ul>comment
-        <li *ngFor="let oneComment of ride.theComment">
+<div class="container">
+    <blockquote class="quote-box">
+      <p class="quotation-mark">
+        “
+      </p>
+      <ul class="quote-text" >comment
+        <li  *ngFor="let oneComment of ride.theComment">
      {{oneComment.content}}
-      <br>
       </li>
     </ul>
+
+
+    </blockquote>
+</div>
+<!-- comments example-->
+
 
   <button *ngIf="!isShowingForm" (click)="showCommentForm()">
     create a comment
