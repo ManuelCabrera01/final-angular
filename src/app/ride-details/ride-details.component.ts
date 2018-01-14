@@ -161,7 +161,7 @@ export class RideDetailsComponent implements OnInit {
 
     deleteRide() {
       if (window.confirm('Are you sure?')) {
-        this.rideThang.remove(this.ride._id)
+        this.rideThang.remove(this.ride.theRide._id,)
         .subscribe(() => {
         this.routerThang.navigate(['rides']);
         });
