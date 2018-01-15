@@ -161,10 +161,8 @@ baseUrl = environment.apiBase;
       this.myCoolUploader.onBuildItemForm = (item, form) => {
           form.append('rideNamee',        this.rideInfo.rideName);
           form.append('rideDistance',     this.rideInfo.rideDistance);
-          // form.append('ridePosition',     this.rideInfo.ridePosition);
           form.append('rideDate',         this.rideInfo.rideDate);
           form.append('rideCategory',     this.rideInfo.rideCategory);
-          // form.append('ridePosition',     this.rideInfo.ridePosition);
           form.append('rideParticipant',  this.rideInfo.rideParticipant);
           form.append('rideMap',          this.rideInfo.rideMap);
       };
@@ -177,7 +175,6 @@ baseUrl = environment.apiBase;
           this.rideInfo = {
             rideName: undefined,
             rideDistance: undefined,
-            // ridePosition:"",
             rideDate:"",
             rideCategory:"",
             rideParticipant:"",

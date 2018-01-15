@@ -95,7 +95,7 @@ export class RideService {
               rideUsername: componentInfo.clientUsername,
               updateCategory: componentInfo.updateCategory,
               updateDate: componentInfo.updateDate,
-            
+
           },
 
         {withCredentials: true }

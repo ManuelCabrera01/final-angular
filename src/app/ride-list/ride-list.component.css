@@ -49,10 +49,15 @@ agm-map {
 }
 
 #eachRide{
+  margin-left: auto;
+   margin-right: auto;
+   width: 400px;
   border: 1px solid #ddd;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
+    margin: 14px;
+  background-color:#8e867f;
 
 }
 #eachRide:hover {
