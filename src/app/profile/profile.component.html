@@ -1,24 +1,74 @@
-<h2>{{currentUser.username}}</h2>
+<div class="container">
+
+
+
+  <div class="row">
+        <div class="col-md-12 text-center ">
+          <div class="panel panel-default">
+            <div class="userprofile social ">
+              <div class="userpic"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="userpicimg"> </div>
+              <h3 class="username">Welcome back {{currentUser.username}}</h3>
+              <p> here you can rediscover  all your rides</p>
+            </div>
+            <div class="col-md-12 border-top border-bottom">
+              <ul class="nav nav-pills pull-left countlist" role="tablist">
+
+                <li role="presentation">
+                  <h3>6<br>
+                    <small>Activity</small> </h3>
+                </li>
+              </ul>
+            
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
 <hr>
 
- <!-- <h2>{{ride.user}} is a :  {{currentUser.category}} category!</h2> -->
 
-<ul>
- <li *ngFor="let ride of userRideArray">
-   <h1>leader: {{ride.user.username}}</h1>
-   <h3> name: {{ ride.name }} </h3>
-   <p> date:{{ride.date|date:'dd/MM/yyyy'}} </p>
-    <p>category: {{ride.category}}</p>
-  <p>distance: {{ride.distance}} miles</p>
-  <!--  PLACE YOPUR MAP IN NHERE-->
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
-<agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
-<agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
-<agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
-</agm-map>
-  <!-- END OF YOUR MAP -->
-   <a [routerLink]="['/rides', ride._id]"> View Details </a>
 
- </li>
-</ul>
+
+  <div class="row">
+   <div class="col-md-4 col-sm-6"  *ngFor="let ride of userRideArray">
+     <ul>
+    <li >
+      <div class="crane_container">
+        <div class="carbox">
+          <a class="map-carbox" href="">
+          <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+          <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+          <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
+          </agm-map>
+          </a>
+          <div class="carbox-content">
+            <h4 class="carbox-title">
+             name: {{ ride.name }}
+              leader: {{ride.user.username}}
+          </h4>
+              <p class="">
+                distance: {{ride.distance}} miles
+                   <br>
+                category: {{ride.category}}
+                   <br>
+               date:{{ride.date|date:'dd/MM/yyyy'}}
+
+             </p>
+        </div>
+          <div class="carbox-read-more">
+            <a [routerLink]="['/rides', ride._id]"> View Details </a>
+         </div>
+         </div>
+      </div>
+      </li>
+    </ul>
+  </div>
+</div>

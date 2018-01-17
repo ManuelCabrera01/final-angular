@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container margin_60">
 <div style="text-align:center">
 <!-- ...........carruse................ -->
 <div class="carrusel">
@@ -92,46 +92,55 @@
  <!-- <pre> {{ user | json }} </pre> -->
  </div>
 
-
- <h3>ride list</h3>
+ <div class="main_title">
+			<h2>best <span>Rides</span> selections</h2>
+			<p>the best rides you will fin in your area</p>
+	</div>
  <p *ngIf="rideListError" class="error">
    {{ rideListError }}
  </p>
 
- <hr>
- <hr>
-
  <div class="row">
-  <ul>
-   <li class="col-sm-3 " id= "eachRide" *ngFor="let oneRide of rideArray| filter:'name':pattern">
-     <h3> {{ oneRide.name }} </h3>
-     <h4>created by</h4>:
-     <b *ngIf="oneRide.user?._id !== currentUser._id">
-       {{ oneRide.user.username }}
-     </b>
-     <b *ngIf="oneRide.user?._id === currentUser._id">
-       YOU
-     </b>
-     <h4>
-       distance: {{ oneRide.distance}} miles
-       <br>
-       category : {{oneRide.category}}
-       <br>
-       date : {{oneRide.date|date:'dd/MM/yyyy'}}
-     </h4>
-       <a [routerLink]="['profile', oneRide.user._id]"> profile </a>
-       <br>
-     <a [routerLink]="['rides', oneRide._id]"> View Details </a>
-
-    <h3>Map</h3>
-    <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
-    <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
-    <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
-    </agm-map>
-   </li>
- </ul>
- </div>
-
-
+  <div class="col-md-4 col-sm-6"  *ngFor="let oneRide of rideArray| filter:'name':pattern">
+    <ul>
+      <li>
+        <div class="crane_container">
+          <div class="carbox">
+            <a class="img-carbox" href="">
+            <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+            <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+            <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
+            </agm-map>
+            </a>
+              <div class="carbox-content">
+                <h4 class="carbox-title">
+                    {{ oneRide.name }}
+                     created by:
+                   <b *ngIf="oneRide.user?._id !== currentUser._id">
+                     {{ oneRide.user.username }}
+                   </b>
+                   <b *ngIf="oneRide.user?._id === currentUser._id">
+                     YOU
+                 </b>
+                </h4>
+              <p class="">
+                 distance: {{ oneRide.distance}} miles
+                   <br>
+                 category : {{oneRide.category}}
+                   <br>
+                 date : {{oneRide.date|date:'dd/MM/yyyy'}}
+              </p>
+            </div>
+              <div class="carbox-read-more">
+            <a [routerLink]="['profile', oneRide.user._id]"> owner profile </a>
+            <hr>
+            <br>
+            <a [routerLink]="['rides', oneRide._id]"> View Details </a>
+           </div>
+         </div>
+       </div>
+     </li>
+    </ul>
+  </div>
 </div>
 </div>
