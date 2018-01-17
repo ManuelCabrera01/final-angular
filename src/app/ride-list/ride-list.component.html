@@ -1,28 +1,27 @@
 <div class="container-fluid">
-
 <div style="text-align:center">
 <!-- ...........carruse................ -->
-  <div class="carrusel">
-    <div ng2-carouselamos class = 'slider'
-    [items]='items'
-    [width]='900'
-    [$prev]= 'prev'
-    [$next] ='next'
-    [$item]= 'item'>
-  </div>
+<div class="carrusel">
+  <div ng2-carouselamos class = 'slider'
+  [items]='items'
+  [width]='900'
+  [$prev]= 'prev'
+  [$next] ='next'
+  [$item]= 'item'
+  ></div>
   <ng-template #prev>
     <img src="/assets/images/if_icon-ios7-arrow-back_211686.png" id="left" />
-    </ng-template>
+  </ng-template>
 
-    <ng-template #next>
+  <ng-template #next>
     <img src="/assets/images/if_icon-ios7-arrow-forward_211688 (1).png" id="ridth" />
-    </ng-template>
+  </ng-template>
 
-    <ng-template #item let-item let-i="index">
-      <div class="items">
+  <ng-template #item let-item let-i="index">
+    <div class="items">
       <img src="{{item.name}}" >
 
-      </div>
+    </div>
   </ng-template>
 </div>
 <!-- ..............carrusel............. -->
@@ -33,27 +32,31 @@
     <h2> Hi, <mark>{{ currentUser.username }}</mark> welcome back, are you ready for a new ride? </h2>
   </div>
 
-      <div class="panel-body">
-    <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">  Add Ride</button>
+  <div class="panel-body">
 
-    <input id="ride-name" placeholder="ride name" placeholder="find a ride"
+  <button *ngIf="!isShowingForm" (click)="showRideForm()">
+    Add Ride
+  </button>
+
+    <label for="ride-name"> Search thing: </label>
+    <input id="ride-name" placeholder="thing name"
     type="text" [(ngModel)]="pattern">
-    </div>
+  </div>
 </div>
 
+<div *ngIf = "isShowingForm">
+  <!-- create a n ew ride form -->
 
 
 
-  <!-- modal create rides -->
+  <h3>Create a New Ride</h3>
 
   <p *ngIf = "saveError" class = "error">
     {{saveError}}
   </p>
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+  <div style="text-align:center">
 
-  <form (ngSubmit) = "saveNewRide()">
+<form (ngSubmit) = "saveNewRide()">
   <label for="ride-name-input"> Ride Name </label>
   <input type = "text" id="ride-name-input"
   placeholder=" tour de france" [(ngModel)] = "rideInfo.rideName" name = "rideName">
@@ -71,58 +74,63 @@
   [(ngModel)] = "rideInfo.rideDate" name = "rideDate">
  <br>
 
+ <!-- END OF YOUR MAP -->
+    <br>
 
     <button> Save Ride </button>
 </form>
 </div>
-  </div>
 </div>
 <!-- create a new ride end -->
 
+
 <!-- panel primario -->
- <div *ngIf="currentUser"> </div>
 
 
+ <div *ngIf="currentUser">
+   <!-- leave current user just in case -->
+ <!-- <pre> {{ user | json }} </pre> -->
+ </div>
 
 
- <h2>ride list</h2>
-   <p *ngIf="rideListError" class="error">
+ <h3>ride list</h3>
+ <p *ngIf="rideListError" class="error">
    {{ rideListError }}
-   </p>
+ </p>
 
  <hr>
  <hr>
 
-<div class="row">
- <ul>
-  <li class="col-sm-3 " id= "eachRide" *ngFor="let oneRide of rideArray| filter:'name':pattern">
-    <h3> {{ oneRide.name }} </h3>  
-    <h4>created by</h4>:
-    <b *ngIf="oneRide.user?._id !== currentUser._id">
-      {{ oneRide.user.username }}
-    </b>
-    <b *ngIf="oneRide.user?._id === currentUser._id">
-      YOU
-    </b>
-    <h4>
-      distance: {{ oneRide.distance}} miles
-      <br>
-      category : {{oneRide.category}}
-      <br>
-      date : {{oneRide.date|date:'dd/MM/yyyy'}}
-    </h4>
-      <a [routerLink]="['profile', oneRide.user._id]"> profile </a>
-      <br>
-    <a [routerLink]="['rides', oneRide._id]"> View Details </a>
+ <div class="row">
+  <ul>
+   <li class="col-sm-3 " id= "eachRide" *ngFor="let oneRide of rideArray| filter:'name':pattern">
+     <h3> {{ oneRide.name }} </h3>
+     <h4>created by</h4>:
+     <b *ngIf="oneRide.user?._id !== currentUser._id">
+       {{ oneRide.user.username }}
+     </b>
+     <b *ngIf="oneRide.user?._id === currentUser._id">
+       YOU
+     </b>
+     <h4>
+       distance: {{ oneRide.distance}} miles
+       <br>
+       category : {{oneRide.category}}
+       <br>
+       date : {{oneRide.date|date:'dd/MM/yyyy'}}
+     </h4>
+       <a [routerLink]="['profile', oneRide.user._id]"> profile </a>
+       <br>
+     <a [routerLink]="['rides', oneRide._id]"> View Details </a>
 
-   <h3>Map</h3>
-   <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
-   <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
-   <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
-   </agm-map>
-  </li>
-</ul>
-</div>
+    <h3>Map</h3>
+    <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+    <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+    <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
+    </agm-map>
+   </li>
+ </ul>
+ </div>
 
 
 </div>
