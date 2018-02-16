@@ -1,30 +1,61 @@
 <div class="container">
-
-<!--  add api for your map  anf the join ride and ofcuorse style-->
+  <div class="row">
+  <h4>So I've worked on a new project and came up with this UI. Here you can use it. :) Follow me on twitter: <a href="https://twitter.com/AlexMahrt/">@AlexMahrt</a></h4>
+</div>
+  <hr>
 <a [routerLink]="['/rides']"> Back to list </a>
-<div *ngIf="ride">
-        <h1>{{ride.theRide.user}}</h1>
-        <h2> {{ ride.theRide.name }}</h2>
-        <h3>distace :{{ride.theRide.distance}}</h3>
-        <p>  date: {{ride.theRide.date|date:'dd/MM/yyyy'}} </p>
-        <!-- <h2>{{ride.user.userName}}</h2> -->
-        <p> category: {{ride.theRide.category}}</p>
-        <p> participant: {{ride.theRide.participant}}</p>
-        <button class="btn btn-primary" click="joinRide()" >join</button>
+   <div *ngIf="ride">
+<!--  add api for your map  anf the join ride and ofcuorse style-->
+        <div class="row row-margin-bottom">
+                   <div class="col-md-5 no-padding lib-item" data-category="view">
+                       <div class="lib-panel">
+                           <div class="row box-shadow">
+                               <div class="col-md-6">
+                              
+                                  <div class="lib-img-show">
 
-        <p>MAP...</p>
+                                 <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+                                   <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+                                   <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
+                                 </agm-map>
+
+                                 </div>
+                               </div>
+                               <div class="col-md-6">
+                                   <div class="lib-row lib-header">
+                                       Example library
+                                       <div class="lib-header-seperator"></div>
+                                   </div>
+                                   <div class="lib-row lib-desc">
+
+                                             <h1>{{ride.theRide.user}}</h1><!-- this wont be patt of the final result -->
+                                             <h2> {{ ride.theRide.name }}</h2>
+                                             <h3>distace :{{ride.theRide.distance}}</h3>
+                                             <p>  date: {{ride.theRide.date|date:'dd/MM/yyyy'}} </p>
+                                             <!-- <h2>{{ride.user.userName}}</h2> -->
+                                             <p> category: {{ride.theRide.category}}</p>
+                                             <p> participant: {{ride.theRide.participant}}</p>
+                                             <button class="btn btn-primary" click="joinRide()" >join</button>                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-md-1"></div>
 
         <!--  PLACE YOPUR MAP IN NHERE-->
     <!-- this creates a google map on the page with the given lat/lng from -->
     <!-- the component as the initial center of the map: -->
-    <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+    <!-- <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
       <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
       <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
-    </agm-map>
-        <!-- END OF YOUR MAP -->
+    </agm-map> -->
+
+    <!-- ............................???????????????????????????????????????????? -->
 
 
-<!--commentsexample  -->
+
+
+    <!-- .................................////////////???????????????????????????????????/ -->
 
 <div class="container">
     <blockquote class="quote-box">
