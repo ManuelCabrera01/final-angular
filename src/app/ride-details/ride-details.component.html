@@ -1,8 +1,6 @@
 <div class="container">
-  <div class="row">
-  <h4>So I've worked on a new project and came up with this UI. Here you can use it. :) Follow me on twitter: <a href="https://twitter.com/AlexMahrt/">@AlexMahrt</a></h4>
-</div>
-  <hr>
+
+
 <a [routerLink]="['/rides']"> Back to list </a>
    <div *ngIf="ride">
 <!--  add api for your map  anf the join ride and ofcuorse style-->
@@ -11,10 +9,10 @@
                        <div class="lib-panel">
                            <div class="row box-shadow">
                                <div class="col-md-6">
-                              
+
                                   <div class="lib-img-show">
 
-                                 <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+                                 <agm-map  class="lib-img-show" [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
                                    <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
                                    <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
                                  </agm-map>
@@ -23,41 +21,54 @@
                                </div>
                                <div class="col-md-6">
                                    <div class="lib-row lib-header">
-                                       Example library
+                                       <h2> {{ ride.theRide.name }}</h2>
                                        <div class="lib-header-seperator"></div>
                                    </div>
                                    <div class="lib-row lib-desc">
 
-                                             <h1>{{ride.theRide.user}}</h1><!-- this wont be patt of the final result -->
-                                             <h2> {{ ride.theRide.name }}</h2>
                                              <h3>distace :{{ride.theRide.distance}}</h3>
                                              <p>  date: {{ride.theRide.date|date:'dd/MM/yyyy'}} </p>
-                                             <!-- <h2>{{ride.user.userName}}</h2> -->
                                              <p> category: {{ride.theRide.category}}</p>
                                              <p> participant: {{ride.theRide.participant}}</p>
-                                             <button class="btn btn-primary" click="joinRide()" >join</button>                                   </div>
+                                             <button class="btn btn-primary" click="joinRide()" >join</button>
+                                              <button (click)="deleteRide()"> Delete </button>
+                                              <button *ngIf="!isShowingForm" (click)="showRideForm()">
+                                                edit  Ride
+                                              </button>
+                                                  </div>
                                </div>
                            </div>
                        </div>
                    </div>
-                   <div class="col-md-1"></div>
 
-        <!--  PLACE YOPUR MAP IN NHERE-->
-    <!-- this creates a google map on the page with the given lat/lng from -->
-    <!-- the component as the initial center of the map: -->
-    <!-- <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
-      <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
-      <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
-    </agm-map> -->
+                           <div *ngIf = "isShowingForm">
+                             <br>
 
-    <!-- ............................???????????????????????????????????????????? -->
+                             <form (ngSubmit) ="editRide()">
 
 
+                           <label for="ride-name-input"> Ride Name </label>
+                           <input type = "text" id="ride-name-input"
+                           placeholder=" " [(ngModel)] = "rideInfo.updateName" name = "updateName">
+                           <br>
+                           <label for="ride-distance-input"> miles  </label>
+                           <input type = "text" id="ride-distance-input" placeholder=" 100"
+                           [(ngModel)] = "rideInfo.rupdateDistance" name = "updateDistance">
+                           <br>
+                           <label for="ride-category-input"> category  </label>
+                           <input type = "text" id="ride-category-input" placeholder=" A B or C"
+                            [(ngModel)] = "rideInfo.updateCategory" name = "updateCategory">
+                           <br>
+                           <label for="ride-date-input">Enter new date of the ride</label>
+                           <input id="ride-date-input" type="date"
+                           [(ngModel)] = "rideInfo.rupdateDate" name = "updateDate">
+                           <br>
+                           <button> Save  </button>
+                          </form>
+                         </div>
+<div class="row">
+<div class="col-md-12">
 
-
-    <!-- .................................////////////???????????????????????????????????/ -->
-
-<div class="container">
     <blockquote class="quote-box">
       <p class="quotation-mark">
         “
@@ -67,10 +78,8 @@
      {{oneComment.content}}
       </li>
     </ul>
-
-
     </blockquote>
-</div>
+
 <!-- comments example-->
 
 
@@ -79,56 +88,23 @@
   </button>
 
   <div *ngIf = "isShowingForm">
-
-
     <p *ngIf = "saveError" class = "error">
       {{saveError}}
     </p>
-
   <form (ngSubmit) = "saveNewComment()">
     <label for="comment-content-input"> create a comment</label>
     <textarea rows="8" cols="80" type = "text" id="comment-content-input"
-               placeholder="comment the shit out of this ride" [(ngModel)] = "commentInfo.commentContent" name = "commentContent">
+               placeholder="commentthis ride" [(ngModel)] = "commentInfo.commentContent" name = "commentContent">
   </textarea>
-
     <br>
       <button> Save comment </button>
   </form>
   </div>
-
+</div>
       </div>
       <!-- <div *ngIf = "currentUser._id === ride.theRide.user?._id"> -->
-
-      <button (click)="deleteRide()"> Delete </button>
-
+    </div>
 
 
-        <button *ngIf="!isShowingForm" (click)="showRideForm()">
-          edit  Ride
-        </button>
-        <div *ngIf = "isShowingForm">
-          <br>
-
-          <form (ngSubmit) ="editRide()">
-
-
-        <label for="ride-name-input"> Ride Name </label>
-        <input type = "text" id="ride-name-input"
-        placeholder=" " [(ngModel)] = "rideInfo.updateName" name = "updateName">
-        <br>
-        <label for="ride-distance-input"> miles  </label>
-        <input type = "text" id="ride-distance-input" placeholder=" 100"
-        [(ngModel)] = "rideInfo.rupdateDistance" name = "updateDistance">
-        <br>
-        <label for="ride-category-input"> category  </label>
-        <input type = "text" id="ride-category-input" placeholder=" A B or C"
-         [(ngModel)] = "rideInfo.updateCategory" name = "updateCategory">
-        <br>
-        <label for="ride-date-input">Enter new date of the ride</label>
-        <input id="ride-date-input" type="date"
-        [(ngModel)] = "rideInfo.rupdateDate" name = "updateDate">
-        <br>
-        <button> Save  </button>
-       </form>
-      </div>
+</div>
 </div>

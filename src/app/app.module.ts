@@ -18,7 +18,7 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 import { AgmCoreModule } from '@agm/core';
 import { NavbarComponent } from './navbar/navbar.component';
-import { BlogComponent } from './blog/blog.component';
+// import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { BlogComponent } from './blog/blog.component';
     ProfileComponent,
     FilterPipe,
     NavbarComponent,
-    BlogComponent,
+    // BlogComponent,
 
   ],
   imports: [

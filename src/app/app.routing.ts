@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import {BlogComponent } from './blog/Blog.Component'
+// import {BlogComponent } from './blog/Blog.Component'
 import { AuthComponent } from './auth/auth.component';
 // import { CommentComponent } from './comment/comment.component';
 import {RideListComponent } from './ride-list/ride-list.component';
