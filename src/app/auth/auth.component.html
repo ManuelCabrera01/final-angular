@@ -17,9 +17,7 @@
           <input [(ngModel)]="signUpInfo.username"  for="username-input" name="usernameValue" id = "username-input"  type="text" placeholder="What's your username?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
           <input [(ngModel)]="signUpInfo.password"  for="password-input" name="passwordValue" type="password" placeholder="Choose a password" required="required" class="input pass"/>
           <input type="submit" value="Sign me up!" class="inputButton"/>
-          <div class="text-center">
-              already have an account? <button>Sign up</button>
-          </div>
+
         </form>
       </div>
      </div>
@@ -35,9 +33,7 @@
           <input [(ngModel)]="loginInfo.username"  id = "login-username-input" for="login-username-input "  name="username" type="text" placeholder="peter sagan" class="input pass"/>
           <input [(ngModel)]= "loginInfo.password" id = "login-pass-input"  name="loginPassword" type="password" placeholder="enter your password" required="required" class="input pass"/>
           <input type="submit" value="log me in!" class="inputButton"/>
-          <div class="text-center">
-                      <a href="#" id="">create an account</a> - <a href="#" id="">forgot password</a>
-                  </div>
+        
         </form>
       </div>
       </div>
