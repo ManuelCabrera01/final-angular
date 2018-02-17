@@ -1,102 +1,56 @@
 agm-map {
-  height:300px;
-  width: 300px
-}
+  display: block;
+  margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
 
-blockquote{
-    border-left:none
-}
-
-.quote-badge{
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-.quote-box{
-
-    overflow: hidden;
-    margin-top: -50px;
-    padding-top: -100px;
-    border-radius: 17px;
-    background-color: #4ADFCC;
-    margin-top: 25px;
-    color:white;
-    width: 325px;
-    box-shadow: 2px 2px 2px 2px #E0E0E0;
-
-}
-
-.quotation-mark{
-
-    margin-top: -10px;
-    font-weight: bold;
-    font-size:100px;
-    color:white;
-    font-family: "Times New Roman", Georgia, Serif;
-
-}
-
-.quote-text{
-
-    font-size: 19px;
-    margin-top: -65px;
+  height:500px;
+  width: 500px
 }
 
 
-/*style  for the ride info display*/
-.lib-panel {
-    margin-bottom: 20Px;
-}
-.lib-panel img {
-    width: 100%;
-    background-color: transparent;
+.infoRow{
+
+ text-align:center;
+
 }
 
-.lib-panel .row,
-.lib-panel .col-md-6 {
-    padding: 0;
-    background-color: #FFFFFF;
-}
+.mapCol{
 
 
-.lib-panel .lib-row {
-    padding: 0 20px 0 20px;
+}
+.buttonSet{
+
+    }
+
+.infoCol{
+  margin-top: 15%;
 }
 
-.lib-panel .lib-row.lib-header {
-    background-color: #FFFFFF;
-    font-size: 20px;
-    padding: 10px 20px 0 20px;
+.editRides{
 }
 
-.lib-panel .lib-row.lib-header .lib-header-seperator {
-    height: 2px;
-    width: 26px;
-    background-color: #d9d9d9;
-    margin: 7px 0 7px 0;
+.joinRow{
+
 }
 
-.lib-panel .lib-row.lib-desc {
-    position: relative;
-    height: 100%;
-    display: block;
-    font-size: 13px;
+.addCol{
+   text-align:center;
 }
-.lib-panel .lib-row.lib-desc a{
-    position: absolute;
-    width: 100%;
-    bottom: 10px;
-    left: 20px;
-}
+ .participantcol{
+ }
 
-.row-margin-bottom {
-    margin-bottom: 20px;
-}
+ .CommentRow{
 
-.box-shadow {
-    -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.10);
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.10);
-}
+ }
+ .addCommentCol{
 
-.no-padding {
-    padding: 0;
-}
+ }
+ .commetForm{
+ }
+ .commentCol{
+
+ }
+ footer{
+
+ }
