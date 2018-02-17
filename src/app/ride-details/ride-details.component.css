@@ -3,15 +3,16 @@ agm-map {
   margin-top: auto;
     margin-left: auto;
     margin-right: auto;
-
-  height:500px;
-  width: 500px
+   height:500px;
+   width: 500px
 }
 
 
 .infoRow{
 
- text-align:center;
+text-align:center;
+ border: solid black;
+ border-radius: 10px
 
 }
 

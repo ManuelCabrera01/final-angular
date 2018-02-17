@@ -6,8 +6,8 @@
 .<div class="container">
   <div *ngIf="ride">
 
-  .<div class="row infoRow bg-primary">
-    <div class="col-lg-6 col-sm-12 mapCol bg-success">
+  .<div class="row infoRow ">
+    <div class="col-lg-6 col-sm-12 mapCol ">
 
       <agm-map   [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
         <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
@@ -19,11 +19,16 @@
       <button *ngIf="!isShowingForm" (click)="showRideForm()" class = "btn btn-info">modify Ride  </button>
 </div>
     </div >
-    <div class="col-lg-6 col-sm-12 infoCol bg-info">
+    <div class="col-lg-6 col-sm-12 infoCol">
 
          <h2> {{ ride.theRide.name }}</h2>
+         <br>
+         <br>
+         <br>
       <h3>distace :{{ride.theRide.distance}}</h3>
+      <br>
       <p>  date: {{ride.theRide.date|date:'dd/MM/yyyy'}} </p>
+      <br>
       <p> category: {{ride.theRide.category}}</p>
     </div>
   </div>
