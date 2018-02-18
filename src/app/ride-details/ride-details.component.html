@@ -33,7 +33,7 @@
     </div>
   </div>
 <!-- edit form area -->
-<div class="row bg- warning">
+<div class="row">
   <div class="editRides bg-info">
     <div *ngIf = "isShowingForm">
       <br>
@@ -65,7 +65,7 @@
 
 
   <!-- edit form area finish -->
-  .<div class="row joinRow bg-danger">
+  .<div class="row joinRow">
     <div class="col-lg-3 col-sm-12 addCol bg-primary">
       <p>Click here to join this ride</p>
       <button class="btn btn-primary" click="joinRide()" >join</button>
@@ -78,45 +78,39 @@
 
 
   </div>
-  .<div class="row CommentRow bg-info">
+  .<div class="row CommentRow">
     .<div class="col-lg-6 col-sm-12 addCommentCol bg-warning">
-      <button *ngIf="!isShowingForm" (click)="showCommentForm()"  class = "btn btn-info">
-        create a comment
-      </button>
-      <!-- create comment form -->
-      <div class="row bg-danger">
-        <div class="commetForm">
-          <div *ngIf = "isShowingForm">
-            <p *ngIf = "saveError" class = "error">
-              {{saveError}}
-            </p>
-          <form (ngSubmit) = "saveNewComment()">
-            <label for="comment-content-input"> create a comment</label>
-            <textarea rows="8" cols="80" type = "text" id="comment-content-input"
-                       placeholder="commentthis ride" [(ngModel)] = "commentInfo.commentContent" name = "commentContent">
-          </textarea>
-            <br>
-              <button> Save comment </button>
-          </form>
-          </div>
 
-        </div>
+      <div class="col-lg-4 col-sm-6 text-center">
+      <div class="well">
+          <h4>do you want to add any comment?</h4>
+          <p *ngIf = "saveError" class = "error">
+            {{saveError}}
+          </p>
+      <div class="input-group">
+        <form (ngSubmit) = "saveNewComment()">
+          <input type="text" id="userComment" class="form-control input-sm chat-input" for="comment-content-input"  placeholder="Write your message here..." />
+        <span class="input-group-btn" onclick="addComment()">
+              <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment" [(ngModel)] = "commentInfo.commentContent" name = "commentContent"></span> Add Comment</a>
+          </span>
+              </form>
       </div>
 
-
-      <!-- create commet form -->
+      <hr data-brackets-id="12673">
+      <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+          <strong class="pull-left primary-font">James</strong>
+          <small class="pull-right text-muted">
+             <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
+          <li  *ngFor="let oneComment of ride.theComment">
+        {{oneComment.content}}
+        </li>
+     </ul>
+       </div>
     </div>
-    <div class="col-lg-6 col-md-12 commentCol bg-primary">
-      <li  *ngFor="let oneComment of ride.theComment">
-   {{oneComment.content}}
-    </li>
     </div>
 
-
-
+    </div>
+    <footer>
+     <a [routerLink]="['/rides']"> Back to list </a>
+   </footer>
   </div>
-  <footer>
-    <a [routerLink]="['/rides']"> Back to list </a>
-  </footer>
-  </div>
-</div>
