@@ -1,11 +1,8 @@
 
       <!-- <div *ngIf = "currentUser._id === ride.theRide.user?._id"> -->
 
-
-
 .<div class="container">
   <div *ngIf="ride">
-
   .<div class="row infoRow ">
     <div class="col-lg-6 col-sm-12 mapCol ">
 
@@ -17,12 +14,10 @@
           <div class="buttonSet">
       <button (click)="deleteRide()" class ="btn btn-danger" role= "button"> Delete </button>
       <button *ngIf="!isShowingForm" (click)="showRideForm()" class = "btn btn-info">modify Ride  </button>
-</div>
-    </div >
-    <div class="col-lg-6 col-sm-12 infoCol">
-
+          </div>
+      </div >
+        <div class="col-lg-6 col-sm-12 ">
          <h2> {{ ride.theRide.name }}</h2>
-         <br>
          <br>
          <br>
       <h3>distace :{{ride.theRide.distance}}</h3>
@@ -32,34 +27,35 @@
       <p> category: {{ride.theRide.category}}</p>
     </div>
   </div>
+</div>
+
+
 <!-- edit form area -->
 <div class="row">
   <div class="editRides bg-info">
     <div *ngIf = "isShowingForm">
       <br>
-
-      <form (ngSubmit) ="editRide()">
-
-    <label for="ride-name-input"> Ride Name </label>
-    <input type = "text" id="ride-name-input"
-    placeholder=" " [(ngModel)] = "rideInfo.updateName" name = "updateName">
-    <br>
-    <label for="ride-distance-input"> miles  </label>
-    <input type = "text" id="ride-distance-input" placeholder=" 100"
-    [(ngModel)] = "rideInfo.rupdateDistance" name = "updateDistance">
-    <br>
-    <label for="ride-category-input"> category  </label>
-    <input type = "text" id="ride-category-input" placeholder=" A B or C"
-     [(ngModel)] = "rideInfo.updateCategory" name = "updateCategory">
-    <br>
-    <label for="ride-date-input">Enter new date of the ride</label>
-    <input id="ride-date-input" type="date"
-    [(ngModel)] = "rideInfo.rupdateDate" name = "updateDate">
-    <br>
-    <button> Save  </button>
-    </form>
+        <form (ngSubmit) ="editRide()">
+          <label for="ride-name-input"> Ride Name </label>
+          <input type = "text" id="ride-name-input"
+            placeholder=" " [(ngModel)] = "rideInfo.updateName" name = "updateName">
+            <br>
+          <label for="ride-distance-input"> miles  </label>
+          <input type = "text" id="ride-distance-input" placeholder=" 100"
+          [(ngModel)] = "rideInfo.rupdateDistance" name = "updateDistance">
+            <br>
+          <label for="ride-category-input"> category  </label>
+          <input type = "text" id="ride-category-input" placeholder=" A B or C"
+           [(ngModel)] = "rideInfo.updateCategory" name = "updateCategory">
+            <br>
+          <label for="ride-date-input">Enter new date of the ride</label>
+          <input id="ride-date-input" type="date"
+          [(ngModel)] = "rideInfo.rupdateDate" name = "updateDate">
+            <br>
+            <button> Save  </button>
+        </form>
+      </div>
     </div>
-  </div>
   </div>
 
 
@@ -69,24 +65,23 @@
     <div class="col-lg-3 col-sm-12 addCol bg-primary">
       <p>Click here to join this ride</p>
       <button class="btn btn-primary" click="joinRide()" >join</button>
-
     </div>
     <div class="col-lg-8 col-sm-12 participantcol bg-success">
-      participant:
+      participants
        <li>{{ride.theRide.participant}}</li>
     </div>
-
-
   </div>
-  .<div class="row CommentRow">
-    .<div class="col-lg-6 col-sm-12 addCommentCol bg-warning">
-      <button *ngIf="!isShowingForm" (click)="showCommentForm()"  class = "btn btn-info">
-        create a comment
-      </button>
+
+  <!-- .<div class="row CommentRow"> -->
+      <!-- .<div class="col-lg-6 col-sm-12 addCommentCol "> -->
+        <!-- <button = "btn btn-info">  create a comment  </button> -->
+      <!-- </div> -->
+  <!-- </div> -->
       <!-- create comment form -->
       <div class="row ">
+          .<div class="col-lg-6 col-sm-12">
         <div class="commetForm">
-          <div *ngIf = "isShowingForm">
+          <!-- <div *ngIf = "isShowingForm"> -->
             <p *ngIf = "saveError" class = "error">
               {{saveError}}
             </p>
@@ -94,62 +89,22 @@
             <label for="comment-content-input"> create a comment</label>
             <textarea rows="8" cols="80" type = "text" id="comment-content-input"
                        placeholder="commentthis ride" [(ngModel)] = "commentInfo.commentContent" name = "commentContent">
-          </textarea>
+            </textarea>
             <br>
               <button> Save comment </button>
           </form>
-          </div>
-
+          <!-- </div> -->
         </div>
       </div>
-
-
       <!-- create commet form -->
-    </div>
-    <div class="col-lg-6 col-md-12 commentCol bg-primary">
-      <li  *ngFor="let oneComment of ride.theComment">
-   {{oneComment.content}}
-    </li>
-    </div>
-
-
-
+            <div class="col-lg-6 col-md-12 commentCol bg-primary">
+              <li  *ngFor="let oneComment of ride.theComment">
+             {{oneComment.content}}
+              </li>
+      </div>
   </div>
   <footer>
     <a [routerLink]="['/rides']"> Back to list </a>
   </footer>
-  </div>
+
 </div>
-
-.<div class="row CommentRow">
-  .<div class="col-lg-6 col-sm-12 addCommentCol bg-warning">
-
-    <div class="col-lg-4 col-sm-6 text-center">
-    <div class="well">
-        <h4>do you want to add any comment?</h4>
-        <p *ngIf = "saveError" class = "error">
-          {{saveError}}
-        </p>
-    <div class="input-group">
-      <form (ngSubmit) = "saveNewComment()">
-        <input type="text" id="userComment" class="form-control input-sm chat-input" for="comment-content-input"  placeholder="Write your message here..." />
-      <span class="input-group-btn" onclick="addComment()">
-            <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment" [(ngModel)] = "commentInfo.commentContent" name = "commentContent"></span> Add Comment</a>
-        </span>
-            </form>
-    </div>
-
-    <hr data-brackets-id="12673">
-    <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
-        <strong class="pull-left primary-font">J//ames</strong>
-        <small class="pull-right text-muted">
-           <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
-        <li  *ngFor="let oneComment of ride.theComment">
-      {{oneComment.content}}
-      </li>
-   </ul>
-     </div>
-  </div>
-  </div>
-
-  </div>
