@@ -91,17 +91,18 @@
             <p *ngIf = "saveError" class = "error">
               {{saveError}}
             </p>
-          <form (ngSubmit) = "saveNewComment()">
+          <!-- <form (ngSubmit) = "saveNewComment()"> -->
             <label for="comment-content-input"> </label>
             <textarea rows="8" cols="80" type = "text" id="comment-content-input"
                        placeholder="comment this ride" [(ngModel)] = "commentInfo.commentContent" name = "commentContent">
             </textarea>
             <br>
               <button> Save comment </button>
-          </form>
+          <!-- </form> -->
           <!-- </div> -->
+
         </div>
-        <br>]
+        <br>
 
         <ul  *ngFor="let oneComment of ride.theComment">
 <div class="commentbox">
