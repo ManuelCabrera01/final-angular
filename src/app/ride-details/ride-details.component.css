@@ -3,16 +3,21 @@ agm-map {
   margin-top: auto;
     margin-left: auto;
     margin-right: auto;
-   height:500px;
-   width: 500px
+   height:400px;
+   width: 400px;
+
+
+
 }
 
 
 .infoRow{
-background-color: white;
+ background: linear-gradient(to bottom right, #f1e5e5,#54676d);
 text-align:center;
  border: solid black;
- border-radius: 10px
+ border-radius: 10px;
+   padding: 10px;
+   box-shadow: 5px 10px #888888;
 
 }
 
@@ -37,25 +42,48 @@ text-align:center;
 }
 
 .addCol{
-  background-color: white;
+  margin-right: 20px;
+  background: linear-gradient(to bottom right, #f1e5e5,#54676d);
   text-align:center;
    border: solid black;
-   border-radius: 10px
+   border-radius: 10px;
+   padding: 10px;
+   box-shadow: 5px 10px #888888;
 }
  .participantcol{
+   background-color: white;
+   text-align:center;
+    border: solid black;
+    border-radius: 10px;   padding: 10px;
+       box-shadow: 5px 10px #888888;
  }
 
  .CommentRow{
 
  }
- .addCommentCol{
-
- }
+.col-center{
+  float: none;
+  margin: 0 auto;
+}
  .commetForm{
- }
- .commentCol{
 
+   background: linear-gradient(to bottom right, #f1e5e5,#54676d);
+   margin-top: 40px;
+   background-color: white;
+   text-align:center;
+    border: solid black;
+    border-radius: 10px;   padding: 10px;
+       box-shadow: 5px 10px #888888;
+ }
+ .commentbox{
+   background-color: white;
+   text-align:center;
+    border: solid black;
+    border-radius: 10px;
+      padding: 10px;
  }
  footer{
 
  }
+
+ textarea{width: 100%;}

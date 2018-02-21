@@ -62,7 +62,7 @@ baseUrl = environment.apiBase;
     private routerThang:Router,
 
     ) {
-    this.items= [
+      this.items= [
       {name:'/assets/images/blackandwhite.jpeg'},
       {name:'/assets/images/blackandwhite(1).jpeg'},
       {name:'/assets/images/blackandwhite(2).jpeg'},

@@ -11,10 +11,7 @@
         <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
       </agm-map>
           <br>
-          <div class="buttonSet">
-      <button (click)="deleteRide()" class ="btn btn-danger" role= "button"> Delete </button>
-      <button *ngIf="!isShowingForm" (click)="showRideForm()" class = "btn btn-info">modify Ride  </button>
-          </div>
+
       </div >
         <div class="col-lg-6 col-sm-12 ">
          <h2> {{ ride.theRide.name }}</h2>
@@ -25,6 +22,15 @@
       <p>  date: {{ride.theRide.date|date:'dd/MM/yyyy'}} </p>
       <br>
       <p> category: {{ride.theRide.category}}</p>
+
+      <br>
+        <div class="buttonSet">
+
+    <button (click)="deleteRide()" class ="btn btn-danger" role= "button"> Delete </button>
+    <button *ngIf="!isShowingForm" (click)="showRideForm()" class = "btn btn-info">modify Ride  </button>
+      <!-- <a [routerLink]="['/rides']"> </a> -->
+      <button type="button" name="button"  [routerLink]="['/rides']"  class ="btn btn-warning"> Back to list</button>
+        </div>
     </div>
   </div>
 </div>
@@ -62,12 +68,12 @@
 
   <!-- edit form area finish -->
   .<div class="row joinRow">
-    <div class="col-lg-3 col-sm-12 addCol bg-primary">
-      <p>Click here to join this ride</p>
+    <div class="col-lg-3 col-sm-12 addCol">
+<h4>Click here to join this ride</h4>
       <button class="btn btn-primary" click="joinRide()" >join</button>
     </div>
     <div class="col-lg-8 col-sm-12 participantcol bg-success">
-      participants
+      <h4>participants</h4>
        <li>{{ride.theRide.participant}}</li>
     </div>
   </div>
@@ -79,29 +85,34 @@
   <!-- </div> -->
       <!-- create comment form -->
       <div class="row ">
-          .<div class="col-lg-6 col-sm-12">
-        <div class="commetForm">
+          .<div class="col-lg-8 col-sm-12  col-center ">
+        <div class="commetForm ">
           <!-- <div *ngIf = "isShowingForm"> -->
             <p *ngIf = "saveError" class = "error">
               {{saveError}}
             </p>
           <form (ngSubmit) = "saveNewComment()">
-            <label for="comment-content-input"> create a comment</label>
+            <label for="comment-content-input"> </label>
             <textarea rows="8" cols="80" type = "text" id="comment-content-input"
-                       placeholder="commentthis ride" [(ngModel)] = "commentInfo.commentContent" name = "commentContent">
+                       placeholder="comment this ride" [(ngModel)] = "commentInfo.commentContent" name = "commentContent">
             </textarea>
             <br>
               <button> Save comment </button>
           </form>
           <!-- </div> -->
         </div>
+        <br>]
+
+        <ul  *ngFor="let oneComment of ride.theComment">
+<div class="commentbox">
+       {{oneComment.content}}
+         </div>
+       <hr>
+     </ul>
+
       </div>
       <!-- create commet form -->
-            <div class="col-lg-6 col-md-12 commentCol bg-primary">
-              <li  *ngFor="let oneComment of ride.theComment">
-             {{oneComment.content}}
-              </li>
-      </div>
+
   </div>
   <footer>
     <a [routerLink]="['/rides']"> Back to list </a>
