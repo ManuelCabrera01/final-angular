@@ -24,8 +24,9 @@ export class RideListComponent implements OnInit {
    lat: number = 51.678418;
    lng: number = 7.809007;
 
-   items :Array <any> = []
+   items :Array <any> = [];
 
+   backgroundImg : Array <any> = []
   currentUser: any = {};
   logoutError: string;
   rideArray: any[] = [];
@@ -63,12 +64,12 @@ baseUrl = environment.apiBase;
 
     ) {
       this.items= [
-      {name:'/assets/images/blackandwhite.jpeg'},
+      // {name:'/assets/images/blackandwhite.jpeg'},
       {name:'/assets/images/blackandwhite(1).jpeg'},
       {name:'/assets/images/blackandwhite(2).jpeg'},
       {name:'/assets/images/blackandwhite(3).jpeg'},
       {name:'/assets/images/blackandwhite(4).jpeg'},
-      {name:'/assets/images/blackandwhite.jpeg'},
+      // {name:'/assets/images/blackandwhite.jpeg'},
       {name:'/assets/images/blackandwhite(1).jpeg'},
       {name:'/assets/images/blackandwhite(2).jpeg'},
       {name:'/assets/images/blackandwhite(3).jpeg'},
@@ -76,6 +77,11 @@ baseUrl = environment.apiBase;
       {name:'/assets/images/images(1).jpeg'},
       {name:'/assets/images/images(2).jpeg'},
       {name:'/assets/images/images(3).jpeg'}
+    ]
+
+    this.backgroundImg =[
+      {name:'/assets/images/blackandwhite.jpeg'},
+
     ]
 }
     ngOnInit() {
