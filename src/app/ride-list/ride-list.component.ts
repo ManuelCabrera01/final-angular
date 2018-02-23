@@ -64,12 +64,13 @@ baseUrl = environment.apiBase;
 
     ) {
       this.items= [
-      // {name:'/assets/images/blackandwhite.jpeg'},
+        {name:'/assets/images/images(1).jpeg'},
+        {name:'/assets/images/images(2).jpeg'},
+        {name:'/assets/images/images(3).jpeg'},
       {name:'/assets/images/blackandwhite(1).jpeg'},
       {name:'/assets/images/blackandwhite(2).jpeg'},
       {name:'/assets/images/blackandwhite(3).jpeg'},
       {name:'/assets/images/blackandwhite(4).jpeg'},
-      // {name:'/assets/images/blackandwhite.jpeg'},
       {name:'/assets/images/blackandwhite(1).jpeg'},
       {name:'/assets/images/blackandwhite(2).jpeg'},
       {name:'/assets/images/blackandwhite(3).jpeg'},

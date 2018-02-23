@@ -32,16 +32,17 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2> Hi, <mark>{{ currentUser.username }}</mark> welcome back, are you ready for a new ride? </h2>
+    <button *ngIf="!isShowingForm" (click)="showRideForm()" class="btn">
+      Add Ride
+    </button>
   </div>
 
   <div class="panel-body">
 
-  <button *ngIf="!isShowingForm" (click)="showRideForm()">
-    Add Ride
-  </button>
 
-    <label for="ride-name"> Search thing: </label>
-    <input id="ride-name" placeholder="thing name"
+
+    <label for="ride-name"> Search : </label>
+    <input id="ride-name" placeholder="Ride  name"
     type="text" [(ngModel)]="pattern">
   </div>
 </div>
@@ -79,7 +80,7 @@
  <!-- END OF YOUR MAP -->
     <br>
 
-    <button> Save Ride </button>
+    <button class="btn"> Save Ride </button>
 </form>
 </div>
 </div>
