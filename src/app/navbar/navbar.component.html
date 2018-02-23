@@ -16,8 +16,9 @@
             <ul class="nav navbar-nav">
                 <!-- <li><a[routerLink]="['/blog']">blog</a></li> -->
                 <li><a [routerLink]="['/rides']">home</a></li>
+                <li><a [routerLink]="['/']">login/signup</a></li>
                 <li><a (click)="logMeOutPls()"> Log Out </a>
-                  
+
                 <p *ngIf="logoutError" class="error">
                   {{ logoutError }}
                 </p>&nbsp;&nbsp;</li>
