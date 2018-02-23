@@ -92,14 +92,14 @@
               {{saveError}}
             </p>
             <!-- for some reason the compailer keeps asking for a paremeter in order to excute the ng summit if your want it to work locally uncomment the comment below -->
-          <!-- <form (ngSubmit) = "saveNewComment()"> -->
+          <form (ngSubmit) = "saveNewComment()">
             <label for="comment-content-input"> </label>
             <textarea rows="8" cols="80" type = "text" id="comment-content-input"
                        placeholder="comment this ride" [(ngModel)] = "commentInfo.commentContent" name = "commentContent">
             </textarea>
             <br>
               <button> Save comment </button>
-          <!-- </form> -->
+          </form>
           <!-- </div> -->
 
         </div>
