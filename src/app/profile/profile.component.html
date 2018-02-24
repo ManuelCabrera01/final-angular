@@ -1,46 +1,33 @@
 <div class="container">
 <!--  add the add button , edit button and style the shit of it-->
 
-
+  <hr>
   <div class="row">
-        <div class="col-md-12 text-center ">
+        <div class="col-md-4 rigthCol ">
           <div class="panel panel-default">
             <div class="userprofile social ">
               <div class="userpic"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="userpicimg"> </div>
               <h3 class="username">Welcome back {{currentUser.username}}</h3>
-              <p> here you can rediscover  all your rides</p>
+              <p> here you can rediscover  all your rides
+
+              </p>
             </div>
             <div class="col-md-12 border-top border-bottom">
               <ul class="nav nav-pills pull-left countlist" role="tablist">
-
                 <li role="presentation">
                   <h3>6<br>
                     <small>Activity</small> </h3>
                 </li>
               </ul>
-
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
+        <div class="col-md-6 leftCol ">
 
-
-
-
-
-
-
-
-
-<hr>
-
-
-
-
-  <div class="row">
-   <div class="col-md-4 col-sm-6"  *ngFor="let ride of userRideArray">
-     <ul>
-    <li >
+       <div class="col-md-6 col-sm-4"  *ngFor="let ride of userRideArray">
+           <ul>
+    <!-- <li > -->
       <div class="crane_container">
         <div class="carbox">
           <a class="map-carbox" href="">
@@ -68,7 +55,9 @@
          </div>
          </div>
       </div>
-      </li>
+      <!-- </li> -->
     </ul>
   </div>
-</div>
+    </div>
+      </div>
+        </div>
