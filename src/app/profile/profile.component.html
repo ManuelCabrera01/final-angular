@@ -3,14 +3,14 @@
 
   <hr>
   <div class="row">
-        <div class="col-md-4 rigthCol ">
+        <div class="col-md-4 leftCol  ">
           <div class="panel panel-default">
             <div class="userprofile social ">
               <div class="userpic"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="userpicimg"> </div>
-              <h3 class="username">Welcome back {{currentUser.username}}</h3>
-              <p> here you can rediscover  all your rides
+          
+              <h3 class="username">Cyclist {{currentUser.username}}</h3>
+              <h4 class="username">Category :{{currentUser.category}}</h4>
 
-              </p>
             </div>
             <div class="col-md-12 border-top border-bottom">
               <ul class="nav nav-pills pull-left countlist" role="tablist">
@@ -23,15 +23,15 @@
             <div class="clearfix"></div>
           </div>
         </div>
-        <div class="col-md-6 leftCol ">
+        <div class="col-md-6 rigthCol ">
 
-       <div class="col-md-6 col-sm-4"  *ngFor="let ride of userRideArray">
+       <div class="col-md-6 col-sm-6 ridesContainer"  *ngFor="let ride of userRideArray">
            <ul>
     <!-- <li > -->
       <div class="crane_container">
         <div class="carbox">
           <a class="map-carbox" href="">
-          <agm-map [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
+          <agm-map class = 'mapbox' [latitude]="lat" [longitude]="lng"(mapClick)= "pointRide($event)">
           <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
           <agm-marker [latitude]="lat1" [longitude]="lng1" ></agm-marker>
           </agm-map>
