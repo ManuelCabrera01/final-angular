@@ -120,7 +120,7 @@ baseUrl = environment.apiBase;
             this.rideArray = allTheRides;
         },
         () => {
-            this.rideListError = 'Sorry everybody. No camels today. 😱';
+            this.rideListError = 'Sorry everybody. No rides today. 😱';
         }
       );
   } // close getThemRides()
@@ -130,6 +130,7 @@ baseUrl = environment.apiBase;
   } // close showCamelForm()
 
   saveNewRide() {
+    
       // if no picture, regular AJAX upload
       if (this.myCoolUploader.getNotUploadedItems().length === 0) {
         this.saveRideNoPicture();
