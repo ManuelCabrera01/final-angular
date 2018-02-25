@@ -63,7 +63,7 @@ export class AuthComponent implements OnInit {
     })
     .catch((err)=>{
       const parsedError = err.json();
-      this.errorMessage= parsedError.message+ '🤪';
+      this.errorMessage= parsedError.message+ 'somethin went wrong';
     })
   }//close signThemUp
 
@@ -85,7 +85,7 @@ export class AuthComponent implements OnInit {
     .catch((err)=> {
 
       const parsedError = err.json();
-      this.loginErrorMessage= parsedError.message = '🤪'
+      this.loginErrorMessage= parsedError.message = 'something went wrong'
     });
 }
 }
