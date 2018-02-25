@@ -30,11 +30,12 @@
 
 
 <div class="panel panel-primary">
+  <h2> Hi, <mark>{{ currentUser.username }}</mark> welcome, are you ready for a new ride? </h2>
+  <button *ngIf="!isShowingForm" (click)="showRideForm()" class="btn">
+    Add Ride
+  </button>
   <div class="panel-heading">
-    <h2> Hi, <mark>{{ currentUser.username }}</mark> welcome back, are you ready for a new ride? </h2>
-    <button *ngIf="!isShowingForm" (click)="showRideForm()" class="btn">
-      Add Ride
-    </button>
+
   </div>
 
   <div class="panel-body">

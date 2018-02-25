@@ -38,7 +38,7 @@
 
 <!-- edit form area -->
 <div class="row">
-  <div class="editRides bg-info">
+  <div class="editRides ">
     <div *ngIf = "isShowingForm">
       <br>
         <form (ngSubmit) ="editRide()">
@@ -58,7 +58,7 @@
           <input id="ride-date-input" type="date"
           [(ngModel)] = "rideInfo.rupdateDate" name = "updateDate">
             <br>
-            <button> Save  </button>
+            <button class = "btn"> Save  </button>
         </form>
       </div>
     </div>
