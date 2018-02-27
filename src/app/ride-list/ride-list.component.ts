@@ -26,7 +26,7 @@ export class RideListComponent implements OnInit {
 
    items :Array <any> = [];
 
-   backgroundImg : Array <any> = []
+  //  backgroundImg : Array <any> = []
   currentUser: any = {};
   logoutError: string;
   rideArray: any[] = [];
@@ -80,10 +80,7 @@ baseUrl = environment.apiBase;
       {name:'/assets/images/images(3).jpeg'}
     ]
 
-    this.backgroundImg =[
-      {name:'/assets/images/blackandwhite.jpeg'},
 
-    ]
 }
     ngOnInit() {
      // this.getThemRides();
@@ -130,7 +127,7 @@ baseUrl = environment.apiBase;
   } // close showCamelForm()
 
   saveNewRide() {
-    
+
       // if no picture, regular AJAX upload
       if (this.myCoolUploader.getNotUploadedItems().length === 0) {
         this.saveRideNoPicture();
