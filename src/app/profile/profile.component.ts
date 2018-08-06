@@ -1,35 +1,31 @@
-import {Component, OnInit} from '@angular/core';
-import {Router,ActivatedRoute}            from '@angular/router';
-import {environment }       from '../../environments/environment';
-import {RideService}         from '../service/ride.service';
-import {AuthService}         from '../service/auth.service';
-import {ProfileService}      from '../service/profile.service';
-import {FileUploader }       from 'ng2-file-upload';
-
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { environment } from "../../environments/environment";
+import { RideService } from "../service/ride.service";
+import { AuthService } from "../service/auth.service";
+import { ProfileService } from "../service/profile.service";
+import { FileUploader } from "ng2-file-upload";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.css"],
   providers: [AuthService, ProfileService, ProfileService]
-
 })
 export class ProfileComponent implements OnInit {
-
-  pointRide(event){
-  this.lat= event.coords.lat,
-  this.lng = event.coords.lng
+  pointRide(event) {
+    (this.lat = event.coords.lat), (this.lng = event.coords.lng);
   }
-// map setings
+  // map setings
   // title: string = 'My first AGM project';
-   lat: number = 51.678418;
-   lng: number = 7.809007;
+  lat: number = 51.678418;
+  lng: number = 7.809007;
 
-    ride: any;
-    currentUser: any = {};
-    userRideArray: any[] = [];
-    rideListError: string;
-    baseUrl = environment.apiBase;
+  ride: any;
+  currentUser: any = {};
+  userRideArray: any[] = [];
+  rideListError: string;
+  baseUrl = environment.apiBase;
 
   constructor(
     private routerThang: Router,
@@ -37,49 +33,38 @@ export class ProfileComponent implements OnInit {
     private authThang: AuthService,
     private rideThang: RideService,
     private profileThang: ProfileService
-  ) { }
-
+  ) {}
 
   ngOnInit() {
-     this.authThang.checklogin()
-       .then((userFromApi) => {
-           this.currentUser = userFromApi;
-           this.route.params.subscribe(params => {
-             this.getProfile(params['id']);
-           })      })
-       .catch(() => {
-           this.routerThang.navigate(['/login']);
-       });
-   }
+    this.authThang
+      .checklogin()
+      .then(userFromApi => {
+        this.currentUser = userFromApi;
+        this.route.params.subscribe(params => {
+          this.getProfile(params["id"]);
+        });
+      })
+      .catch(() => {
+        this.routerThang.navigate(["/login"]);
+      });
+  }
 
-   getProfile(id) {
-   this.profileThang.getProfile(id)
-   .subscribe(
-     (usersRides) => { this.userRideArray = usersRides
+  getProfile(id) {
+    this.profileThang.getProfile(id).subscribe(
+      usersRides => {
+        this.userRideArray = usersRides;
       },
-     () => {
+      () => {
+        this.rideListError = "could not retrieve all the recipes";
+      }
+    );
+  }
 
-       this.rideListError = 'could not retrieve all the recipes'
-     }
-   );
- }
-
- // editUserInfor(id) {
- edituser(id){
-   console.log("MY RIDE = ", this.currentUser._id);
-   this.profileThang.editUser(this.currentUser._id)
-   .subscribe(() => {
-     this.routerThang.navigate(['detaill']);
-   });
- }
-
- //
- // deleteUser(id) {
- // if (window.confirm('Are you really really sure?')) {
- //   this.profileThang.removeUser(this.currentUser._id)
- //     .subscribe(() => {
- //       this.routerThang.navigate(['/login']);
- //     });
- // }
-
+  // editUserInfor(id) {
+  edituser(id) {
+    console.log("MY RIDE = ", this.currentUser._id);
+    this.profileThang.editUser(this.currentUser._id).subscribe(() => {
+      this.routerThang.navigate(["detaill"]);
+    });
+  }
 }
